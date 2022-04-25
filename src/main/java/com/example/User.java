@@ -1,5 +1,6 @@
 package com.example;
 
 public class User {
-    public String description;
+    public String login;
+    public int age;
 }
