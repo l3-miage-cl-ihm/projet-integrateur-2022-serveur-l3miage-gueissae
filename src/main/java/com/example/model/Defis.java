@@ -1,33 +1,30 @@
-package dataBase.model;
+package com.example.model;
 
 import javax.persistence.*;
 
 @NamedQuery(name = "getAllDefis", query = "SELECT d" + 
                                           " FROM Defis d")
 
-/*@NamedQuery(name = "getCreatedDefis", query = "SELECT count(d)" +
-                                              "FROM Defis d" +
-                                              "WHERE d.name = :name") */
-
 @Entity
+@Table(
+    name = "LesDefis"
+)
 public class Defis{
 
     private static Integer identifiant = 1;
 
-    @Id //@GeneratedValue(strategy = GenerationType.AUTO)
+    @Id 
     private String id;
 
-    @Column 
+    @Column(name = "titre", nullable = false)
     private String titre;
 
     @Column
-    private String  description;
-
+    private String description;
 
     public Defis(){
         this.setId();   
     }
-
 
     public String getId() {
         return id;
@@ -59,11 +56,8 @@ public class Defis{
         return identifiant;
     }
 
-
     private static void setIdentifiant(Integer identifiant) {
         Defis.identifiant = identifiant;
-    }
-
-    
+    }    
     
 }
