@@ -12,18 +12,20 @@ import javax.persistence.Table;
 
 @NamedQuery(name = "getAllChamis", query = "SELECT i" + 
                                           " FROM Chamis i")
-
 @Entity
 @Table(
     name = "LesChamis"
 )
 public class Chamis {
 
+    // // // // // // // //
+    //      COLONNE      //
+    // // // // // // // //
+
     @Id
     @Column(
         name="email",
         insertable = true,
-        length = 30,
         nullable = false,
         unique=true,
         updatable = false
@@ -33,10 +35,9 @@ public class Chamis {
     @Column(
         name="login",
         insertable = true,
-        length = 30,
         nullable = false,
         unique=true,
-        updatable = false
+        updatable = true
     )
     private String login;
 
@@ -52,9 +53,7 @@ public class Chamis {
     @Column(
         name="description",
         insertable = true,
-        length = 500,
         nullable = true,
-        // table = "LesChamis",
         unique=false,
         updatable = true
     )
@@ -64,27 +63,17 @@ public class Chamis {
     private Ville ville;
 
     @OneToMany
-    @Column(
-        name="defis",
-        insertable = true,
-        length = 100,
-        nullable = true,
-        unique=false,
-        updatable = true
-    )
     private List<Defis> defis;
 
-    public Chamis() {
-	}
+    @OneToMany
+    private List<Visite> visites;
 
-    public Chamis(String email, String login, Integer age, String description, Ville ville, List<Defis> defis) {
-        this.email = email;
-        this.login = login;
-        this.age = age;
-        this.description = description;
-        this.ville = ville;
-        this.defis = defis;
-    }
+
+    // // // // // // // // 
+    //    CONSTRUCTEUR   //
+    // // // // // // // //
+
+    public Chamis() {}
 
     public Chamis(Chamis chami){
         this.email = chami.getEmail();
@@ -93,6 +82,30 @@ public class Chamis {
         this.description = chami.getDescription();
         this.ville = chami.getVille();
         this.defis = chami.getDefis();
+    }
+
+    public Chamis(String email, String login, Integer age, String description, Ville ville, List<Defis> defis,
+            List<Visite> visites) {
+        this.email = email;
+        this.login = login;
+        this.age = age;
+        this.description = description;
+        this.ville = ville;
+        this.defis = defis;
+        this.visites = visites;
+    }
+
+
+    // // // // // // // // 
+    //     GET & SET     //
+    // // // // // // // //
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getLogin() {
@@ -111,20 +124,20 @@ public class Chamis {
         this.age = age;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Ville getVille() {
+        return ville;
+    }
+
+    public void setVille(Ville ville) {
+        this.ville = ville;
     }
 
     public List<Defis> getDefis() {
@@ -135,12 +148,12 @@ public class Chamis {
         this.defis = defis;
     }
 
-    public Ville getVille() {
-        return ville;
+    public List<Visite> getVisites() {
+        return visites;
     }
 
-    public void setVille(Ville ville) {
-        this.ville = ville;
+    public void setVisites(List<Visite> visites) {
+        this.visites = visites;
     }
 
 }

@@ -83,6 +83,17 @@ public class ChamisController {
         }
     }
 
+    @GetMapping("/login/{chamisId}")
+    public ResponseEntity<Chamis> getChamisByIdBool(@PathVariable(value = "chamisId") String login) {
+
+        Chamis chamisData = repositoryChamis.findByLogin(login);
+        if (chamisData == null) {
+            return new ResponseEntity<>(chamisData,HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(chamisData,HttpStatus.OK);
+        }
+    }
+
     /**
      * 
      * !!! FONCTION A CHANGER !!!! NOUS ALLONS TOUT FAIRE AVEC JPA.
@@ -98,7 +109,7 @@ public class ChamisController {
     @PostMapping("/{chamisId}")
     public ResponseEntity<Chamis> createChamis(@RequestBody Chamis chami) { // verifier si la ville existe et renvoyer une erreur sinon
       try {
-        Chamis _chamis = repositoryChamis.save(new Chamis(chami.getEmail(),chami.getLogin(), chami.getAge(), chami.getDescription(),chami.getVille(),chami.getDefis()));
+        Chamis _chamis = repositoryChamis.save(new Chamis(chami.getEmail(),chami.getLogin(), chami.getAge(), chami.getDescription(),chami.getVille(),chami.getDefis(), chami.getVisites()));
         return new ResponseEntity<>(_chamis, HttpStatus.CREATED);
       } catch (Exception e) {
         System.out.println("ERROR : "+e);

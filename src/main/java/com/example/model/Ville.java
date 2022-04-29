@@ -19,7 +19,6 @@ public class Ville {
         name="id",
         insertable = true,
         nullable = false,
-        // table = "LesVilles",
         unique=true,
         updatable = false
     )
@@ -28,9 +27,7 @@ public class Ville {
     @Column(
         name="ville",
         insertable = true,
-        length = 40,
         nullable = false,
-        // table = "LesVilles",
         unique=false,
         updatable = false
     )

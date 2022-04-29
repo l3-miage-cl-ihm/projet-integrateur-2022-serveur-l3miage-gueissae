@@ -9,38 +9,35 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(
-    name = "LesMateriels"
+@Table (
+    name = "LesEtapes"
 )
-public abstract class Materiel{
 
+public abstract class Etape {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(
-        name="id",
+        name ="id",
         insertable = true,
         nullable = false,
-        unique=true,
+        unique = true,
         updatable = false
     )
     private int id;
 
     @Column(
-        name="numero",
+        name ="numero",
         insertable = true,
         nullable = false,
-        unique=false,
+        unique = false,
         updatable = true
     )
     private int numero;
 
-    public Materiel(int numero) {
+    public Etape(int numero){
         this.numero = numero;
     }
-
-    public Materiel() {
-
-    }
+    public Etape(){}
 
     public int getId() {
         return id;
@@ -54,7 +51,5 @@ public abstract class Materiel{
         this.numero = numero;
     }
 
-    
 
-
-} 
+}

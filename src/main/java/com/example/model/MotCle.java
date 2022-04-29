@@ -1,5 +1,7 @@
 package com.example.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,43 +13,34 @@ public class MotCle {
     @Id 
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(
-        // columnDefinition = "id du mot clé,\n" + 
-        //                    "\tname: id,\n" +
-        //                    "\tinsertable: true,\n" +
-        //                    "\tnullable: false,\n" +
-        //                    "\ttable: \"LesMotsCles,\"\n" +
-        //                    "\tunique: true,\n" +
-        //                    "\tupdatable: false\n",
         name="id",
         insertable = true,
         nullable = false,
-// table = "LesMotsCles",
         unique=true,
         updatable = false
     )
     private int id;
 
     @Column(
-        // columnDefinition = "Mot clé,\n" + 
-        //                    "\tname: mot,\n" +
-        //                    "\tinsertable: true,\n" +
-        //                    "\tlength: 20,\n" +
-        //                    "\tnullable: false,\n" +
-        //                    "\ttable: \"LesMotsCles,\"\n" +
-        //                    "\tunique: false,\n" +
-        //                    "\tupdatable: false\n",
         name="mot",
         insertable = true,
-        length = 20,
         nullable = false,
-        // table = "LesMotsCles",
-        unique=false,
-        updatable = false
+        unique=true,
+        updatable = true
     )
     private String mot;
 
-    public MotCle(String mot) {
-        this.setMot(mot);
+    @ManyToMany
+    private List<Defis> defis;
+
+    
+
+    public MotCle(String mot, List<Defis> defis) {
+        this.mot = mot;
+        this.defis = defis;
+    }
+
+    public MotCle() {
     }
 
     public int getId() {

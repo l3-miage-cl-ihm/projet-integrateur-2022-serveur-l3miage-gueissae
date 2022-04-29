@@ -4,7 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import java.util.List;
+
 import javax.persistence.Column;
 
 @Entity
@@ -26,7 +30,18 @@ public class Epilogue {
     )
     private int id;
 
+    @OneToMany
+    private List<Materiel> materiels;
+
     public Epilogue(){}
+
+    
+
+    public Epilogue(List<Materiel> materiels) {
+        this.materiels = materiels;
+    }
+
+
 
     public int getId() {
         return id;
