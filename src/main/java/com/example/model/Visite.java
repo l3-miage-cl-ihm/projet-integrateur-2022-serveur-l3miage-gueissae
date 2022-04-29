@@ -19,6 +19,11 @@ import com.example.enumeration.Statut;
 )
 
 public class Visite {
+
+    // // // // // // // //
+    //      COLONNE      //
+    // // // // // // // //
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(
@@ -95,10 +100,13 @@ public class Visite {
 
     @OneToMany
     private List<Reponse> Reponses;
-    
-    public Visite(){}
 
     
+    // // // // // // // // 
+    //    CONSTRUCTEUR   //
+    // // // // // // // //
+    
+    public Visite(){}
 
     public Visite(String date, String heure, Mode mode, Statut statut, int score, int temps, String commentaire,
             List<Reponse> reponses) {
@@ -113,6 +121,9 @@ public class Visite {
     }
 
 
+    // // // // // // // // 
+    //     GET & SET     //
+    // // // // // // // //
 
     public int getId() {
         return id;
@@ -172,6 +183,14 @@ public class Visite {
 
     public void setCommentaire(String commentaire) {
         this.commentaire = commentaire;
+    }
+
+    public List<Reponse> getReponses() {
+        return Reponses;
+    }
+
+    public void setReponses(List<Reponse> reponses) {
+        Reponses = reponses;
     }
 
     

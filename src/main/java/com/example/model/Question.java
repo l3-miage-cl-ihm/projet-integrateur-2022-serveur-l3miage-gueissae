@@ -15,6 +15,11 @@ import com.example.enumeration.Type;
 )
 public class Question extends Etape{
 
+
+    // // // // // // // //
+    //      COLONNE      //
+    // // // // // // // //
+
     @Column(
         name="label",
         insertable = true,
@@ -66,7 +71,13 @@ public class Question extends Etape{
     @OneToMany
     private List<Indice> indices;
 
+
+    // // // // // // // // 
+    //    CONSTRUCTEUR   //
+    // // // // // // // //
     
+    public Question(){}
+
     public Question(int numero, String label, String description, String secret, int points, Type typeDeReponse,
             List<Reponse> reponses, List<Indice> indices) {
         super(numero);
@@ -79,8 +90,11 @@ public class Question extends Etape{
         this.indices = indices;
     }
 
-    public Question(){}
 
+    // // // // // // // // 
+    //     GET & SET     //
+    // // // // // // // //
+    
     public String getLabel() {
         return label;
     }
@@ -110,6 +124,22 @@ public class Question extends Etape{
     }
     public void setTypeDeReponse(Type typeDeReponse) {
         this.typeDeReponse = typeDeReponse;
+    }
+
+    public List<Reponse> getReponses() {
+        return reponses;
+    }
+
+    public void setReponses(List<Reponse> reponses) {
+        this.reponses = reponses;
+    }
+
+    public List<Indice> getIndices() {
+        return indices;
+    }
+
+    public void setIndices(List<Indice> indices) {
+        this.indices = indices;
     }
 
     

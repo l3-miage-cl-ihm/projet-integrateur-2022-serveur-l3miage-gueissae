@@ -14,6 +14,10 @@ import javax.persistence.Table;
 )
 public abstract class Materiel{
 
+    // // // // // // // //
+    //      COLONNE      //
+    // // // // // // // //
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(
@@ -34,13 +38,21 @@ public abstract class Materiel{
     )
     private int numero;
 
+
+    // // // // // // // // 
+    //    CONSTRUCTEUR   //
+    // // // // // // // //
+
+    public Materiel() {}
+
     public Materiel(int numero) {
         this.numero = numero;
     }
 
-    public Materiel() {
-
-    }
+    
+    // // // // // // // // 
+    //     GET & SET     //
+    // // // // // // // //
 
     public int getId() {
         return id;
@@ -53,8 +65,5 @@ public abstract class Materiel{
     public void setNumero(int numero) {
         this.numero = numero;
     }
-
-    
-
 
 } 

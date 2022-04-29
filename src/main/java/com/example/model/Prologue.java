@@ -15,6 +15,11 @@ import javax.persistence.Table;
     name = "LesPrologues"
 )
 public class Prologue {
+
+    // // // // // // // //
+    //      COLONNE      //
+    // // // // // // // //
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(
@@ -29,17 +34,32 @@ public class Prologue {
     @OneToMany
     private List<Materiel> materiels;
 
-    public Prologue(){}
 
-    
+    // // // // // // // // 
+    //    CONSTRUCTEUR   //
+    // // // // // // // //
+
+    public Prologue(){}
 
     public Prologue(List<Materiel> materiels) {
         this.materiels = materiels;
     }
 
 
+    // // // // // // // // 
+    //     GET & SET     //
+    // // // // // // // //
 
     public int getId() {
         return id;
     }
+
+    public List<Materiel> getMateriels() {
+        return materiels;
+    }
+
+    public void setMateriels(List<Materiel> materiels) {
+        this.materiels = materiels;
+    }
+
 }

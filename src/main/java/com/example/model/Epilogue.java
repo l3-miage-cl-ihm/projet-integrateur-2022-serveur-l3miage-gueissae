@@ -17,6 +17,10 @@ import javax.persistence.Column;
 )
 public class Epilogue {
 
+    // // // // // // // //
+    //      COLONNE      //
+    // // // // // // // //
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
@@ -33,19 +37,35 @@ public class Epilogue {
     @OneToMany
     private List<Materiel> materiels;
 
-    public Epilogue(){}
 
-    
+    // // // // // // // // 
+    //    CONSTRUCTEUR   //
+    // // // // // // // //
+
+    public Epilogue(){}
 
     public Epilogue(List<Materiel> materiels) {
         this.materiels = materiels;
     }
 
 
+    // // // // // // // // 
+    //     GET & SET     //
+    // // // // // // // //
 
     public int getId() {
         return id;
     }
+
+    public List<Materiel> getMateriels() {
+        return materiels;
+    }
+
+    public void setMateriels(List<Materiel> materiels) {
+        this.materiels = materiels;
+    }
+
+    
     
 }
 

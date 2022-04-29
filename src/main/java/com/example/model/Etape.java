@@ -14,6 +14,11 @@ import javax.persistence.Table;
 )
 
 public abstract class Etape {
+
+    // // // // // // // //
+    //      COLONNE      //
+    // // // // // // // //
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(
@@ -34,10 +39,21 @@ public abstract class Etape {
     )
     private int numero;
 
+
+    // // // // // // // // 
+    //    CONSTRUCTEUR   //
+    // // // // // // // //
+
+    public Etape(){}
+
     public Etape(int numero){
         this.numero = numero;
     }
-    public Etape(){}
+
+
+    // // // // // // // // 
+    //     GET & SET     //
+    // // // // // // // //
 
     public int getId() {
         return id;

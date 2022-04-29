@@ -13,6 +13,10 @@ import javax.persistence.Table;
 )
 public class Video extends Materiel {
 
+    // // // // // // // //
+    //      COLONNE      //
+    // // // // // // // //
+
     @Column(
         name="label",
         insertable = true,
@@ -31,15 +35,23 @@ public class Video extends Materiel {
     )
     private String lien;
 
+
+    // // // // // // // // 
+    //    CONSTRUCTEUR   //
+    // // // // // // // //
+
+    public Video() {}
+
     public Video(int numero, String label, String lien) {
         super(numero);
         this.label = label;
         this.lien = lien;
     }
 
-    public Video() {
     
-    }
+    // // // // // // // // 
+    //     GET & SET     //
+    // // // // // // // //
 
     public String getLabel() {
         return label;
@@ -56,9 +68,5 @@ public class Video extends Materiel {
     public void setLien(String lien) {
         this.lien = lien;
     }
-
-
-    
-   
     
 }

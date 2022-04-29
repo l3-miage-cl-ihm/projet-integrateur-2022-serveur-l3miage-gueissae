@@ -10,6 +10,11 @@ import javax.persistence.*;
 )
 public class MotCle {
 
+
+    // // // // // // // //
+    //      COLONNE      //
+    // // // // // // // //
+
     @Id 
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(
@@ -30,18 +35,21 @@ public class MotCle {
     )
     private String mot;
 
-    @ManyToMany
-    private List<Defis> defis;
+
+    // // // // // // // // 
+    //    CONSTRUCTEUR   //
+    // // // // // // // //
+
+    public MotCle() {}
+
+    public MotCle(String mot) {
+        this.mot = mot;
+    }
 
     
-
-    public MotCle(String mot, List<Defis> defis) {
-        this.mot = mot;
-        this.defis = defis;
-    }
-
-    public MotCle() {
-    }
+    // // // // // // // // 
+    //     GET & SET     //
+    // // // // // // // //
 
     public int getId() {
         return id;
@@ -53,5 +61,6 @@ public class MotCle {
 
     public void setMot(String mot) {
         this.mot = mot;
-    }   
+    }
+
 }

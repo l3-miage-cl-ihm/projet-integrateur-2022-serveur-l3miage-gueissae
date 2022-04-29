@@ -12,6 +12,10 @@ import javax.persistence.Table;
     name = "LesVilles"
 )
 public class Ville {
+
+    // // // // // // // //
+    //      COLONNE      //
+    // // // // // // // //
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,13 +37,21 @@ public class Ville {
     )
     private String ville;
 
-    public Ville(){
-        
-    }
+
+    // // // // // // // // 
+    //    CONSTRUCTEUR   //
+    // // // // // // // //
+
+    public Ville(){}
 
     public Ville(String ville) {
         this.setVille(ville);
     }
+
+
+    // // // // // // // // 
+    //     GET & SET     //
+    // // // // // // // //
 
     public int getId() {
         return id;

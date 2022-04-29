@@ -12,6 +12,11 @@ import javax.persistence.Table;
 
 public class Texte extends Materiel {
 
+
+    // // // // // // // //
+    //      COLONNE      //
+    // // // // // // // //
+
     @Column(
         name="label",
         insertable = true,
@@ -21,15 +26,23 @@ public class Texte extends Materiel {
     )
     private String label;
 
+
+    // // // // // // // // 
+    //    CONSTRUCTEUR   //
+    // // // // // // // //
+
+    public Texte() {}
+
     public Texte(int numero, String label) {
         super(numero);
         this.label = label;
     }
 
-    public Texte() {
-       
-    }
   
+    // // // // // // // // 
+    //     GET & SET     //
+    // // // // // // // //
+
     public String getLabel() {
         return label;
     }
@@ -37,6 +50,5 @@ public class Texte extends Materiel {
     public void setLabel(String label) {
         this.label = label;
     }
-
-    
+        
 }

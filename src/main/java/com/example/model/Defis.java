@@ -131,16 +131,21 @@ public class Defis{
     @OneToMany
     private List<Etape> etapes;
 
+    @ManyToMany
+    private List<MotCle> motsCles;
 
+
+    // // // // // // // // 
+    //    CONSTRUCTEUR   //
+    // // // // // // // //
 
     public Defis(){
         this.setId();   
     }
 
-    public Defis(String titre, String description, Type type, Mode distanciel, int point, int duree,
-            String commentaire, String dateDeCreation, String dateDeModification, List<Visite> visites,
-            Prologue prologue, Epilogue epilogue, List<Etape> etapes) {
-        this.setId();
+    public Defis(String titre, String description, Type type, Mode distanciel, int point, int duree, String commentaire,
+            String dateDeCreation, String dateDeModification, List<Visite> visites, Prologue prologue,
+            Epilogue epilogue, List<Etape> etapes, List<MotCle> motsCles) {
         this.titre = titre;
         this.description = description;
         this.type = type;
@@ -154,9 +159,13 @@ public class Defis{
         this.prologue = prologue;
         this.epilogue = epilogue;
         this.etapes = etapes;
+        this.motsCles = motsCles;
     }
 
 
+    // // // // // // // // 
+    //     GET & SET     //
+    // // // // // // // //
 
     public String getId() {
         return id;
@@ -183,6 +192,93 @@ public class Defis{
         this.description = description;
     }
 
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public Mode getDistanciel() {
+        return distanciel;
+    }
+
+    public void setDistanciel(Mode distanciel) {
+        this.distanciel = distanciel;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
+    }
+
+    public int getDuree() {
+        return duree;
+    }
+
+    public void setDuree(int duree) {
+        this.duree = duree;
+    }
+
+    public String getCommentaire() {
+        return commentaire;
+    }
+
+    public void setCommentaire(String commentaire) {
+        this.commentaire = commentaire;
+    }
+
+    public String getDateDeCreation() {
+        return dateDeCreation;
+    }
+
+    public void setDateDeCreation(String dateDeCreation) {
+        this.dateDeCreation = dateDeCreation;
+    }
+
+    public String getDateDeModification() {
+        return dateDeModification;
+    }
+
+    public void setDateDeModification(String dateDeModification) {
+        this.dateDeModification = dateDeModification;
+    }
+
+    public List<Visite> getVisites() {
+        return visites;
+    }
+
+    public void setVisites(List<Visite> visites) {
+        this.visites = visites;
+    }
+
+    public Prologue getPrologue() {
+        return prologue;
+    }
+
+    public void setPrologue(Prologue prologue) {
+        this.prologue = prologue;
+    }
+
+    public Epilogue getEpilogue() {
+        return epilogue;
+    }
+
+    public void setEpilogue(Epilogue epilogue) {
+        this.epilogue = epilogue;
+    }
+
+    public List<Etape> getEtapes() {
+        return etapes;
+    }
+
+    public void setEtapes(List<Etape> etapes) {
+        this.etapes = etapes;
+    }
 
     private static Integer getIdentifiant() {
         return identifiant;
@@ -190,6 +286,14 @@ public class Defis{
 
     private static void setIdentifiant(Integer identifiant) {
         Defis.identifiant = identifiant;
+    }
+
+    public List<MotCle> getMotsCles() {
+        return motsCles;
+    }
+
+    public void setMotsCles(List<MotCle> motsCles) {
+        this.motsCles = motsCles;
     }    
-    
+
 }

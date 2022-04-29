@@ -10,6 +10,10 @@ import javax.persistence.Table;
 )
 public class Image extends Materiel{
 
+    // // // // // // // //
+    //      COLONNE      //
+    // // // // // // // //
+    
     @Column(
         name="label",
         insertable = true,
@@ -28,16 +32,23 @@ public class Image extends Materiel{
     )
     private String chemin;
 
+
+    // // // // // // // // 
+    //    CONSTRUCTEUR   //
+    // // // // // // // //
+
+    public Image() {}
+
     public Image(int numero, String label, String chemin) {
         super(numero);
         this.label = label;
         this.chemin = chemin;
     }
 
-    public Image() {
-        
-    }
-
+    
+    // // // // // // // // 
+    //     GET & SET     //
+    // // // // // // // //
 
     public String getLabel() {
         return label;

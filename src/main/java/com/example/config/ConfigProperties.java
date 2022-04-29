@@ -2,7 +2,6 @@
 
 // import javax.persistence.EntityManager;
 
-// import com.example.impl.ChamisRepositoryImpl;
 // import com.example.repository.ChamisRepository;
 
 // import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -12,8 +11,13 @@
 
 // @Configuration
 // public class ConfigProperties {
+
+
+
 //     @Bean
+//     //@ConfigurationProperties(prefix="chamisservice")
 //     public ChamisRepository chamisService(EntityManager entityManager){
 //         return new  ChamisRepositoryImpl(entityManager) ;
 //     }
+    
 // }

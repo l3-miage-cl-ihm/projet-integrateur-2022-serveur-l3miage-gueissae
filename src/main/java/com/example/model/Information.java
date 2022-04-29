@@ -13,6 +13,10 @@ import javax.persistence.Table;
 )
 public class Information extends Etape {
 
+    // // // // // // // //
+    //      COLONNE      //
+    // // // // // // // //
+
     @Column(
         name="texte",
         insertable = true,
@@ -25,6 +29,12 @@ public class Information extends Etape {
     @OneToMany
     private List<Indice> indices;
 
+
+    // // // // // // // // 
+    //    CONSTRUCTEUR   //
+    // // // // // // // //
+
+    public Information(){}
     
     public Information(int numero, String texte, List<Indice> indices) {
         super(numero);
@@ -32,7 +42,9 @@ public class Information extends Etape {
         this.indices = indices;
     }
 
-    public Information(){}
+    // // // // // // // // 
+    //     GET & SET     //
+    // // // // // // // //
     
     public String getTexte() {
         return texte;
@@ -41,5 +53,12 @@ public class Information extends Etape {
         this.texte = texte;
     }
 
-    
+    public List<Indice> getIndices() {
+        return indices;
+    }
+
+    public void setIndices(List<Indice> indices) {
+        this.indices = indices;
+    }
+
 }

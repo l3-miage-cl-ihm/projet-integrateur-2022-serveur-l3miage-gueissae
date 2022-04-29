@@ -16,6 +16,9 @@ import javax.persistence.Column;
 
 public class Indice extends Etape {
 
+    // // // // // // // //
+    //      COLONNE      //
+    // // // // // // // //
 
     @Column(
         name="label",
@@ -47,7 +50,12 @@ public class Indice extends Etape {
     @OneToMany
     private List<Visite> visites;
 
+    
+    // // // // // // // // 
+    //    CONSTRUCTEUR   //
+    // // // // // // // //
 
+    public Indice() {}
 
     public Indice(int numero, String label, String description, int points, List<Visite> visites) {
         super(numero);
@@ -57,9 +65,10 @@ public class Indice extends Etape {
         this.visites = visites;
     }
 
-    public Indice() {
-        
-    }
+
+    // // // // // // // // 
+    //     GET & SET     //
+    // // // // // // // //
 
     public String getLabel() {
         return label;
@@ -83,6 +92,14 @@ public class Indice extends Etape {
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    public List<Visite> getVisites() {
+        return visites;
+    }
+
+    public void setVisites(List<Visite> visites) {
+        this.visites = visites;
     }
 
     
