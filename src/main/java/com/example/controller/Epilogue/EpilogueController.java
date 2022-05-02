@@ -31,8 +31,8 @@ public class EpilogueController {
         return new ResponseEntity<List<Epilogue>>(epilogueService.getAllEpilogues(), HttpStatus.OK);
     }
 
-    @GetMapping("/{email}")
-    public ResponseEntity<Epilogue> getChamisByEmail(@PathVariable(value = "id") Integer id) {
+    @GetMapping("/{identifiant}")
+    public ResponseEntity<Epilogue> getChamisByEmail(@PathVariable(value = "identifiant") Integer id) {
         try {
             Epilogue epilogue = epilogueService.findByIdentifiant(id);
             if(epilogue != null)

@@ -85,7 +85,7 @@ public class Arret {
     // // // // // // // //
 
     public int getId() {
-        return id;
+        return identifiant;
     }
 
     public String getCode() {
