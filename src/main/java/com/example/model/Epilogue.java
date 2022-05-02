@@ -25,14 +25,14 @@ public class Epilogue {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     (
-        name= "id",
+        name= "identifiant",
         insertable = true,
         nullable = false,
         unique = true,
         updatable = false
 
     )
-    private int id;
+    private int identifiant;
 
     @OneToMany
     private List<Materiel> materiels;
@@ -53,8 +53,8 @@ public class Epilogue {
     //     GET & SET     //
     // // // // // // // //
 
-    public int getId() {
-        return id;
+    public int getIdentifiant() {
+        return identifiant;
     }
 
     public List<Materiel> getMateriels() {

@@ -6,7 +6,6 @@ import com.example.model.MotCle;
 import com.example.repository.MotCleRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service

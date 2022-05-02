@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class Defis{
 
     // // // // // // // //
-    //      COLONNE      //
+    //      COLONNES     //
     // // // // // // // //
 
     private static Integer identifiant = 1;
@@ -122,6 +122,7 @@ public class Defis{
     @OneToMany
     private List<Visite> visites;
 
+    
     @OneToOne
     private Prologue prologue;
 
