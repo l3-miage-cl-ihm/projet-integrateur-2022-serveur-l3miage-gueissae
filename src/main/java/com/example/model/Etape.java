@@ -55,7 +55,7 @@ public abstract class Etape {
     //     GET & SET     //
     // // // // // // // //
 
-    public int getId() {
+    public int getIdentifiant() {
         return identifiant;
     }
 

@@ -18,13 +18,13 @@ public class MotCle {
     @Id 
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(
-        name="id",
+        name="identifiant",
         insertable = true,
         nullable = false,
         unique=true,
         updatable = false
     )
-    private int id;
+    private int identifiant;
 
     @Column(
         name="mot",
@@ -51,8 +51,8 @@ public class MotCle {
     //     GET & SET     //
     // // // // // // // //
 
-    public int getId() {
-        return id;
+    public int getidentifiant() {
+        return identifiant;
     }
 
     public String getMot() {

@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,12 +34,23 @@ public class DefisController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<org.springframework.http.HttpStatus> registerNewMotCle(@RequestBody Defis defis) {
+    public ResponseEntity<Defis> registerNewMotCle(@RequestBody Defis defis) {
         try {
-            defisService.addNewDefis(defis);
-            return new ResponseEntity<org.springframework.http.HttpStatus>(HttpStatus.OK);
+            Defis d = defisService.addNewDefis(defis);
+            System.out.println(d.getIdentifiant());
+            return new ResponseEntity<Defis>(d, HttpStatus.OK);
         } catch (IllegalStateException e) {
-            return new ResponseEntity<org.springframework.http.HttpStatus>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<Defis>( HttpStatus.BAD_REQUEST);
+        }
+    }
+    @PutMapping("/")
+    public ResponseEntity<Defis> updateDefis(@RequestBody Defis defis) {
+        try {
+            Defis d = defisService.updateDefis(defis);
+            System.out.println(d.getIdentifiant());
+            return new ResponseEntity<Defis>(d, HttpStatus.OK);
+        } catch (IllegalStateException e) {
+            return new ResponseEntity<Defis>( HttpStatus.BAD_REQUEST);
         }
     }
 

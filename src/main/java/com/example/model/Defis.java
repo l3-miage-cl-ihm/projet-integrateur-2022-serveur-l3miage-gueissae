@@ -20,7 +20,7 @@ public class Defis{
     //      COLONNES     //
     // // // // // // // //
 
-    private static Integer identifiant = 1;
+    private static Integer indice = 1;
 
     @Id 
     @Column
@@ -32,7 +32,7 @@ public class Defis{
         updatable = false
 
     )
-    private String id;
+    private String identifiant;
 
     @Column
     (
@@ -141,7 +141,7 @@ public class Defis{
     // // // // // // // //
 
     public Defis(){
-        this.setId();   
+        this.setIdentifiant();   
     }
 
     public Defis(String titre, String description, Type type, Mode distanciel, int point, int duree, String commentaire,
@@ -168,13 +168,13 @@ public class Defis{
     //     GET & SET     //
     // // // // // // // //
 
-    public String getId() {
-        return id;
+    public String getIdentifiant() {
+        return identifiant;
     }
 
-    private void setId() {
-        this.id = "" + getIdentifiant();
-        setIdentifiant(identifiant + 1);
+    private void setIdentifiant() {
+        this.identifiant = "" + getindice();
+        setindice(indice + 1);
     }
 
     public String getTitre() {
@@ -281,12 +281,12 @@ public class Defis{
         this.etapes = etapes;
     }
 
-    private static Integer getIdentifiant() {
-        return identifiant;
+    private static Integer getindice() {
+        return indice;
     }
 
-    private static void setIdentifiant(Integer identifiant) {
-        Defis.identifiant = identifiant;
+    private static void setindice(Integer indice) {
+        Defis.indice = indice;
     }
 
     public List<MotCle> getMotsCles() {
