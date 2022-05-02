@@ -65,6 +65,15 @@ public class Question extends Etape{
     )
     private Type typeDeReponse;
 
+    @Column(
+        name="photo",
+        insertable = true,
+        nullable = true,
+        unique=false,
+        updatable = true
+    )
+    private String photo;
+
     @OneToMany
     private List<Reponse> reponses;
 

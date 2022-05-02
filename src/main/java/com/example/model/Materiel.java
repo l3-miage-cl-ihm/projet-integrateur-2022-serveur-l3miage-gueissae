@@ -21,13 +21,13 @@ public abstract class Materiel{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(
-        name="id",
+        name="identifiant",
         insertable = true,
         nullable = false,
         unique=true,
         updatable = false
     )
-    private int id;
+    private int identifiant;
 
     @Column(
         name="numero",
@@ -55,7 +55,7 @@ public abstract class Materiel{
     // // // // // // // //
 
     public int getId() {
-        return id;
+        return identifiant;
     }
 
     public int getNumero() {

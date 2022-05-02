@@ -32,7 +32,7 @@ public class EpilogueController {
     }
 
     @GetMapping("/{identifiant}")
-    public ResponseEntity<Epilogue> getChamisByEmail(@PathVariable(value = "identifiant") Integer id) {
+    public ResponseEntity<Epilogue> getEpilogueByIdentifiant(@PathVariable(value = "identifiant") Integer id) {
         try {
             Epilogue epilogue = epilogueService.findByIdentifiant(id);
             if(epilogue != null)
@@ -46,7 +46,7 @@ public class EpilogueController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Epilogue> addNewChamis(@RequestBody Epilogue epilogue) {
+    public ResponseEntity<Epilogue> addNewEpilogue(@RequestBody Epilogue epilogue) {
         try {
             epilogueService.addNewEpilogue(epilogue);
             return new ResponseEntity<>(epilogue, HttpStatus.CREATED);

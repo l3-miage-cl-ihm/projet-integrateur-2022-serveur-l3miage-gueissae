@@ -2,6 +2,7 @@ package com.example.model;
 
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -14,11 +15,22 @@ import javax.persistence.Column;
      name = "LesIndices"
 )
 
-public class Indice extends Etape {
+public class Indice{
 
     // // // // // // // //
     //      COLONNE      //
-    // // // // // // // //
+    // // // // // // // //.
+
+    @Id
+    @Column(
+        name="id",
+        insertable = true,
+        nullable = false,
+        unique=true,
+        updatable = false
+    )
+    private String id;
+
 
     @Column(
         name="label",
@@ -57,8 +69,7 @@ public class Indice extends Etape {
 
     public Indice() {}
 
-    public Indice(int numero, String label, String description, int points, List<Visite> visites) {
-        super(numero);
+    public Indice(String label, String description, int points, List<Visite> visites) {
         this.label = label;
         this.description = description;
         this.points = points;

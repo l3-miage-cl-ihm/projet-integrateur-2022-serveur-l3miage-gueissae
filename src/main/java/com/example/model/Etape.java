@@ -16,19 +16,19 @@ import javax.persistence.Table;
 public abstract class Etape {
 
     // // // // // // // //
-    //      COLONNE      //
+    //      COLONNES     //
     // // // // // // // //
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(
-        name ="id",
+        name ="identifiant",
         insertable = true,
         nullable = false,
         unique = true,
         updatable = false
     )
-    private int id;
+    private int identifiant;
 
     @Column(
         name ="numero",
@@ -41,7 +41,7 @@ public abstract class Etape {
 
 
     // // // // // // // // 
-    //    CONSTRUCTEUR   //
+    //    CONSTRUCTEURS  //
     // // // // // // // //
 
     public Etape(){}
@@ -56,7 +56,7 @@ public abstract class Etape {
     // // // // // // // //
 
     public int getId() {
-        return id;
+        return identifiant;
     }
 
     public int getNumero() {

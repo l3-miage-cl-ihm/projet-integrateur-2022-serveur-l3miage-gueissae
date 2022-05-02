@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/api/arret")
+@RequestMapping("/api/Arret")
 public class ArretController {
     
     private final ArretService arretService; 
@@ -32,7 +32,7 @@ public class ArretController {
     }
 
     @GetMapping("/{identifiant}")
-    public ResponseEntity<Arret> getChamisByEmail(@PathVariable(value = "identifiant") Integer id) {
+    public ResponseEntity<Arret> getArretByIdentifiant(@PathVariable(value = "identifiant") Integer id) {
         try {
             Arret arret = arretService.findByIdentifiant(id);
             if(arret != null)
@@ -46,7 +46,7 @@ public class ArretController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Arret> addNewChamis(@RequestBody Arret arret) {
+    public ResponseEntity<Arret> addNewArret(@RequestBody Arret arret) {
         try {
             arretService.addNewArret(arret);
             return new ResponseEntity<>(arret, HttpStatus.CREATED);
