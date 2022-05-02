@@ -29,4 +29,8 @@ public class ChamisService {
     public Chamis findByEmail(String email) {
         return chamisRepository.findByEmail(email);
     }
+
+    public Chamis findByLogin(String login) {
+        return chamisRepository.findByLogin(login);
+    }
 }

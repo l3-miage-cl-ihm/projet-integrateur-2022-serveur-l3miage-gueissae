@@ -46,6 +46,17 @@ public class ChamisController {
         }
     }
 
+    @GetMapping("/login/{chamisId}")
+    public ResponseEntity<Boolean> checkIfLoginExist(@PathVariable(value = "chamisId") String login) {
+
+        Chamis chamisData = chamisService.findByLogin(login);
+        if (chamisData == null) {
+            return new ResponseEntity<Boolean>(false,HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<Boolean>(true,HttpStatus.OK);
+        }
+    }
+
     @PostMapping("/")
     public ResponseEntity<Chamis> addNewChamis(@RequestBody Chamis chami) {
         try {

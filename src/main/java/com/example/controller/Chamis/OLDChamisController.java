@@ -88,16 +88,16 @@
 //         }
 //     }
 
-//     @GetMapping("/login/{chamisId}")
-//     public ResponseEntity<Chamis> getChamisByIdBool(@PathVariable(value = "chamisId") String login) {
+    // @GetMapping("/login/{chamisId}")
+    // public ResponseEntity<Chamis> getChamisByIdBool(@PathVariable(value = "chamisId") String login) {
 
-//         Chamis chamisData = repositoryChamis.findByLogin(login);
-//         if (chamisData == null) {
-//             return new ResponseEntity<>(chamisData,HttpStatus.NOT_FOUND);
-//         } else {
-//             return new ResponseEntity<>(chamisData,HttpStatus.OK);
-//         }
-//     }
+    //     Chamis chamisData = repositoryChamis.findByLogin(login);
+    //     if (chamisData == null) {
+    //         return new ResponseEntity<>(chamisData,HttpStatus.NOT_FOUND);
+    //     } else {
+    //         return new ResponseEntity<>(chamisData,HttpStatus.OK);
+    //     }
+    // }
 
 //     /**
 //      * 
