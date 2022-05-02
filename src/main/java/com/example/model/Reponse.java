@@ -17,27 +17,27 @@ import javax.persistence.Column;
 public class Reponse {
     
     // // // // // // // //
-    //      COLONNE      //
+    //     COLONNES      //
     // // // // // // // //
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     (
-        name= "id",
+        name= "identifiant",
         insertable = true,
         nullable = false,
         unique = true,
         updatable = false
     )
-    private int id;
+    private int identifiant;
 
     @OneToOne
     private Materiel materiel;
 
 
     // // // // // // // // 
-    //    CONSTRUCTEUR   //
+    //   CONSTRUCTEURS   //
     // // // // // // // //
 
     public Reponse(){}
@@ -51,8 +51,8 @@ public class Reponse {
     //     GET & SET     //
     // // // // // // // //
 
-    public int getId() {
-        return id;
+    public int getIdentifiant() {
+        return identifiant;
     }
 
     public Materiel getMateriel() {

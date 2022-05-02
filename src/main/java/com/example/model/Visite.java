@@ -27,13 +27,13 @@ public class Visite {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(
-        name="id",
+        name="identifiant",
         insertable = true,
         nullable = false,
         unique=true,
         updatable = false
     )
-    private int id;
+    private int identifiant;
     
     @Column(
         name="date",
@@ -125,8 +125,8 @@ public class Visite {
     //     GET & SET     //
     // // // // // // // //
 
-    public int getId() {
-        return id;
+    public int getIdentifiant() {
+        return identifiant;
     }
 
     public String getDate() {

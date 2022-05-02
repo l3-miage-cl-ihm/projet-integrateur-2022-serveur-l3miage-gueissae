@@ -4,5 +4,8 @@ import com.example.model.Ville;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface VilleRepository extends JpaRepository<Ville, String> {
+public interface VilleRepository extends JpaRepository<Ville, Integer> {
+
+    public Ville findByIdentifiant(Integer id);
+    
 }

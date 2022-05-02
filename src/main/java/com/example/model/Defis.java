@@ -25,7 +25,7 @@ public class Defis{
     @Id 
     @Column
     (
-        name= "id",
+        name= "identifiant",
         insertable = true,
         nullable = false,
         unique = true,

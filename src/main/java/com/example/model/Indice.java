@@ -18,18 +18,18 @@ import javax.persistence.Column;
 public class Indice{
 
     // // // // // // // //
-    //      COLONNE      //
+    //      COLONNES     //
     // // // // // // // //.
 
     @Id
     @Column(
-        name="id",
+        name="identifiant",
         insertable = true,
         nullable = false,
         unique=true,
         updatable = false
     )
-    private String id;
+    private String identifiant;
 
 
     @Column(
@@ -64,7 +64,7 @@ public class Indice{
 
     
     // // // // // // // // 
-    //    CONSTRUCTEUR   //
+    //   CONSTRUCTEURS   //
     // // // // // // // //
 
     public Indice() {}

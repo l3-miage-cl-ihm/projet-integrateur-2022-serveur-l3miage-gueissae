@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.http.ResponseEntity;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/motCle")
 public class MotCleController {
 

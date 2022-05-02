@@ -5,4 +5,7 @@ import com.example.model.Prologue;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PrologueRepository extends JpaRepository<Prologue, String> {
+
+    public Prologue findByIdentifiant(Integer identifiant);
+
 }
