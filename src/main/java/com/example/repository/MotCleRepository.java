@@ -13,6 +13,7 @@ public interface MotCleRepository extends JpaRepository<MotCle, String> {
     public MotCle findByMot(String mot);
 
     @Query(nativeQuery = true, value = "SELECT * FROM Les_Mots_Cles WHERE mot LIKE ?1% LIMIT 30")
+    
     List<MotCle> findByPrefix(String prefix);
 
 }
