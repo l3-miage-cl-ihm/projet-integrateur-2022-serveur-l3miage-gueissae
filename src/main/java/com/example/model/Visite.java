@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -48,7 +49,7 @@ public class Visite {
         name="heure",
         insertable = true,
         nullable = false,
-        unique=false,
+        unique = false,
         updatable = false
     )
     private String heure;
@@ -99,7 +100,10 @@ public class Visite {
     private String commentaire;
 
     @OneToMany
-    private List<Reponse> Reponses;
+    private List<Repondre> repondres;
+    
+    @ManyToMany
+    private List<Indice> indices;
 
     
     // // // // // // // // 
@@ -109,7 +113,7 @@ public class Visite {
     public Visite(){}
 
     public Visite(String date, String heure, Mode mode, Statut statut, int score, int temps, String commentaire,
-            List<Reponse> reponses) {
+            List<Repondre> repondres, List<Indice> indices) {
         this.date = date;
         this.heure = heure;
         this.mode = mode;
@@ -117,7 +121,8 @@ public class Visite {
         this.score = score;
         this.temps = temps;
         this.commentaire = commentaire;
-        Reponses = reponses;
+        this.repondres = repondres;
+        this.indices = indices;
     }
 
 
@@ -185,13 +190,23 @@ public class Visite {
         this.commentaire = commentaire;
     }
 
-    public List<Reponse> getReponses() {
-        return Reponses;
+    public List<Repondre> getRepondres() {
+        return repondres;
     }
 
-    public void setReponses(List<Reponse> reponses) {
-        Reponses = reponses;
+    public void setRepondres(List<Repondre> repondres) {
+        this.repondres = repondres;
     }
+
+    public List<Indice> getIndices() {
+        return indices;
+    }
+
+    public void setIndices(List<Indice> indices) {
+        this.indices = indices;
+    }
+
+    
 
     
 

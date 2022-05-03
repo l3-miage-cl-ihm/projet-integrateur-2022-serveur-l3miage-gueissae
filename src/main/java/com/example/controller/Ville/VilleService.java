@@ -29,5 +29,4 @@ public class VilleService {
     public Ville findByIdentifiant(Integer id){
         return villeRepository.findByIdentifiant(id);
     }
-
 }

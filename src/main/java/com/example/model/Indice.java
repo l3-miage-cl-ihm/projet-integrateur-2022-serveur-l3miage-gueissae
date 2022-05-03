@@ -3,6 +3,7 @@ package com.example.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -59,8 +60,7 @@ public class Indice{
     )
     private int points;
 
-    @OneToMany
-    private List<Visite> visites;
+ 
 
     
     // // // // // // // // 
@@ -69,11 +69,11 @@ public class Indice{
 
     public Indice() {}
 
-    public Indice(String label, String description, int points, List<Visite> visites) {
+    public Indice(String label, String description, int points) {
         this.label = label;
         this.description = description;
         this.points = points;
-        this.visites = visites;
+        
     }
 
 
@@ -105,13 +105,7 @@ public class Indice{
         this.points = points;
     }
 
-    public List<Visite> getVisites() {
-        return visites;
-    }
-
-    public void setVisites(List<Visite> visites) {
-        this.visites = visites;
-    }
+ 
 
     
 

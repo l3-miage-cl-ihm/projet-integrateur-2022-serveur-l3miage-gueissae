@@ -32,6 +32,16 @@ public class Reponse {
     )
     private int identifiant;
 
+    @Column
+    (
+        name= "bonneReponse",
+        insertable = true,
+        nullable = false,
+        unique = false,
+        updatable = false
+    )
+    private boolean bonneReponse;
+
     @OneToOne
     private Materiel materiel;
 
@@ -42,8 +52,9 @@ public class Reponse {
 
     public Reponse(){}
 
-    public Reponse(Materiel materiel) {
+    public Reponse(Materiel materiel, boolean bonneReponse) {
         this.materiel = materiel;
+        this.bonneReponse = bonneReponse;
     }
 
 
@@ -62,5 +73,15 @@ public class Reponse {
     public void setMateriel(Materiel materiel) {
         this.materiel = materiel;
     }
+
+    public boolean isBonneReponse() {
+        return bonneReponse;
+    }
+
+    public void setBonneReponse(boolean bonneReponse) {
+        this.bonneReponse = bonneReponse;
+    }
+
+    
     
 }

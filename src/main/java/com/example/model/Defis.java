@@ -147,6 +147,7 @@ public class Defis{
     public Defis(String titre, String description, Type type, Mode distanciel, int point, int duree, String commentaire,
             String dateDeCreation, String dateDeModification, List<Visite> visites, Prologue prologue,
             Epilogue epilogue, List<Etape> etapes, List<MotCle> motsCles) {
+        this.setIdentifiant();
         this.titre = titre;
         this.description = description;
         this.type = type;
@@ -296,5 +297,13 @@ public class Defis{
     public void setMotsCles(List<MotCle> motsCles) {
         this.motsCles = motsCles;
     }    
+
+
+    public void addMotCle(MotCle  motcle)  {
+        this.motsCles.add(motcle);
+    }
+    public void  suppressMotCle(MotCle motcle){
+        this.motsCles.remove(motcle);
+    }
 
 }

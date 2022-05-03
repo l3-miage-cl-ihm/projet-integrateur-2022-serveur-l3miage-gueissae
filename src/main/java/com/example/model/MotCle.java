@@ -1,6 +1,5 @@
 package com.example.model;
 
-import java.util.List;
 
 import javax.persistence.*;
 
@@ -62,5 +61,9 @@ public class MotCle {
     public void setMot(String mot) {
         this.mot = mot;
     }
+
+
+
+
 
 }

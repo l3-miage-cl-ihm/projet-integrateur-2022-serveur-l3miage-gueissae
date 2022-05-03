@@ -24,61 +24,28 @@ public class Question extends Etape{
         name="label",
         insertable = true,
         nullable = false,
-        unique=false,
-        updatable = true
+        unique=true,
+        updatable = false
     )
     private String label;
 
     @Column(
         name="description",
         insertable = true,
-        nullable = true,
+        nullable = false,
         unique=false,
         updatable = true
     )
     private String description;
-
-    @Column(
-        name="secret",
-        insertable = true,
-        nullable = false,
-        unique=false,
-        updatable = true
-    )
-    private String secret;
-
-    @Column(
-        name="points",
-        insertable = true,
-        nullable = false,
-        unique=false,
-        updatable = true
-    )
-    private int points;
-
-    @Column(
-        name="typeDeReponse",
-        insertable = true,
-        nullable = false,
-        unique=false,
-        updatable = true
-    )
-    private Type typeDeReponse;
-
-    @Column(
-        name="photo",
-        insertable = true,
-        nullable = true,
-        unique=false,
-        updatable = true
-    )
-    private String photo;
 
     @OneToMany
     private List<Reponse> reponses;
 
     @OneToMany
     private List<Indice> indices;
+
+    @OneToMany
+    private List<Repondre> repondres;
 
 
     // // // // // // // // 
@@ -87,14 +54,11 @@ public class Question extends Etape{
     
     public Question(){}
 
-    public Question(int numero, String label, String description, String secret, int points, Type typeDeReponse,
+    public Question(int numero, String label, String description, 
             List<Reponse> reponses, List<Indice> indices) {
         super(numero);
         this.label = label;
         this.description = description;
-        this.secret = secret;
-        this.points = points;
-        this.typeDeReponse = typeDeReponse;
         this.reponses = reponses;
         this.indices = indices;
     }
@@ -116,24 +80,6 @@ public class Question extends Etape{
     public void setDescription(String description) {
         this.description = description;
     }
-    public String getSecret() {
-        return secret;
-    }
-    public void setSecret(String secret) {
-        this.secret = secret;
-    }
-    public int getPoints() {
-        return points;
-    }
-    public void setPoints(int points) {
-        this.points = points;
-    }
-    public Type getTypeDeReponse() {
-        return typeDeReponse;
-    }
-    public void setTypeDeReponse(Type typeDeReponse) {
-        this.typeDeReponse = typeDeReponse;
-    }
 
     public List<Reponse> getReponses() {
         return reponses;
@@ -149,6 +95,14 @@ public class Question extends Etape{
 
     public void setIndices(List<Indice> indices) {
         this.indices = indices;
+    }
+
+    public List<Repondre> getRepondres() {
+        return repondres;
+    }
+
+    public void setRepondres(List<Repondre> repondres) {
+        this.repondres = repondres;
     }
 
     

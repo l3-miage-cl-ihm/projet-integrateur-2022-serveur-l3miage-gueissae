@@ -148,6 +148,12 @@ public class Chamis {
         this.defis = defis;
     }
 
+    public void addDefi(Defis defi) {
+        List<Defis> lesDefis = this.getDefis();
+        lesDefis.add(defi);
+        this.setDefis(lesDefis);
+    }
+
     public List<Visite> getVisites() {
         return visites;
     }
