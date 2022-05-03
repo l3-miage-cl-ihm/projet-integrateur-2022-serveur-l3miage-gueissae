@@ -35,10 +35,10 @@ public class DataLoader {
         villeRepository.save(grenoble);
     }
 
-    private void LoadVisites(){
-        Visite visite1 = new Visite();
-        visiteRepository.save(visite1);
-    }
+    // private void LoadVisites(){
+    //     Visite visite1 = new Visite();
+    //     visiteRepository.save(visite1);
+    // }
 
     private void LoadDefis(){
         Type typeDefi = Type.CHALLENGE;
