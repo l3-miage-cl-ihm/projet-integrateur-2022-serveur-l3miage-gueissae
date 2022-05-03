@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/Arret")
+@RequestMapping("/api/arret")
 public class ArretController {
     
     private final ArretService arretService; 
@@ -43,7 +43,7 @@ public class ArretController {
                 return new ResponseEntity<Arret>(HttpStatus.BAD_REQUEST);
 
         } catch (Exception e) {
-            return new ResponseEntity<Arret>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<Arret>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -51,9 +51,11 @@ public class ArretController {
     public ResponseEntity<Arret> addNewArret(@RequestBody Arret arret) {
         try {
             arretService.addNewArret(arret);
-            return new ResponseEntity<>(arret, HttpStatus.CREATED);
+            return new ResponseEntity<Arret>(arret, HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Arret>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    //TO DO REMOVE
 }

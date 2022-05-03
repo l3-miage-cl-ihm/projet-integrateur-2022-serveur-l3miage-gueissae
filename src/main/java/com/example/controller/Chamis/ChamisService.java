@@ -46,8 +46,5 @@ public class ChamisService {
         updatedChamis.setVille(chamis.getVille());
         updatedChamis.setVisites(chamis.getVisites());
         return updatedChamis;
-
-
-
     }
 }

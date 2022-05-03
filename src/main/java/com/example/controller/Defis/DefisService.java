@@ -21,10 +21,11 @@ public class DefisService {
     private final MotCleRepository motCleRepository;
 
     @Autowired
-    public DefisService(DefisRepository defisRepository, ChamisRepository chamisRepository, MotCleRepository motCleRepository) {
+    public DefisService(DefisRepository defisRepository, ChamisRepository chamisRepository,
+            MotCleRepository motCleRepository) {
         this.defisRepository = defisRepository;
         this.chamisRepository = chamisRepository;
-        this.motCleRepository=motCleRepository;
+        this.motCleRepository = motCleRepository;
     }
 
     public List<Defis> getAllDefis() {
@@ -67,19 +68,21 @@ public class DefisService {
         return updatedDefi;
 
     }
+
     @Transactional
-    public Defis addMotCleDefis (String mot, String  idDefi){
-        MotCle  motCle = motCleRepository.findByMot(mot);
+    public Defis addMotCleDefis(String mot, String idDefi) {
+        MotCle motCle = motCleRepository.findByMot(mot);
         Defis updatedDefi = defisRepository.findById(idDefi)
-        .orElseThrow(() -> new IllegalArgumentException("Defis not found"));
+                .orElseThrow(() -> new IllegalArgumentException("Defis not found"));
         updatedDefi.addMotCle(motCle);
         return updatedDefi;
     }
+
     @Transactional
-    public Defis removeMotCleDefis(String mot, String idDefi){
-        MotCle  motCle = motCleRepository.findByMot(mot);
+    public Defis removeMotCleDefis(String mot, String idDefi) {
+        MotCle motCle = motCleRepository.findByMot(mot);
         Defis updatedDefi = defisRepository.findById(idDefi)
-        .orElseThrow(() -> new IllegalArgumentException("Defis not found"));
+                .orElseThrow(() -> new IllegalArgumentException("Defis not found"));
         updatedDefi.suppressMotCle(motCle);
         return updatedDefi;
     }

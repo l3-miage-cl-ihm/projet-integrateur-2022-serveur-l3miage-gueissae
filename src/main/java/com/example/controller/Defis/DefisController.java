@@ -52,7 +52,7 @@ public class DefisController {
             System.out.println(d.getIdentifiant());
             return new ResponseEntity<Defis>(d, HttpStatus.OK);
         } catch (IllegalStateException e) {
-            return new ResponseEntity<Defis>( HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<Defis>( HttpStatus.BAD_REQUEST );
         }
     }
     @DeleteMapping("/motcle/{defi}/{mot}")

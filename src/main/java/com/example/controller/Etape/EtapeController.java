@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/Etape")
+@RequestMapping("/api/etape")
 public class EtapeController {
 
     private final EtapeService etapeService;
