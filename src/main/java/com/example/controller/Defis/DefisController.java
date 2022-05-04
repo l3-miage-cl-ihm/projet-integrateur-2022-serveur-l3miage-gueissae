@@ -43,6 +43,9 @@ public class DefisController {
             return new ResponseEntity<Defis>(d, HttpStatus.OK);
         } catch (IllegalStateException e) {
             return new ResponseEntity<Defis>( HttpStatus.BAD_REQUEST);
+
+
+            
         }
     }
     @PutMapping("/")
