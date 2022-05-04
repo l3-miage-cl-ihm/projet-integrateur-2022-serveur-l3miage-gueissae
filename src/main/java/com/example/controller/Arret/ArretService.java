@@ -29,4 +29,16 @@ public class ArretService {
     public Arret findByIdentifiant(Integer id){
         return arretRepository.findByIdentifiant(id);
     }
+
+    public Arret updateArret(Arret arret) {
+        Arret updatedArret = arretRepository.findByIdentifiant(arret.getId());
+        if(updatedArret == null){
+            throw new IllegalArgumentException("L'arret avec l'id:" + arret.getId()+"n'existe pas");
+        }
+        updatedArret.setCode(arret.getCode());
+        updatedArret.setNom(arret.getNom());
+        updatedArret.setDefis(arret.getDefis());
+        updatedArret.setLigne(arret.getLigne());
+        return updatedArret;
+    }
 }

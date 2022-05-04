@@ -30,4 +30,13 @@ public class EpilogueService {
     public Epilogue findByIdentifiant(Integer id){
         return epilogueRepository.findByIdentifiant(id);
     }
+    public Epilogue updateEpilogue(Epilogue epilogue) {
+        Epilogue  updatedEpilogue = epilogueRepository.findByIdentifiant(epilogue.getIdentifiant());
+        if (updatedEpilogue==null){
+            throw new IllegalStateException("epilogue not found");
+        }
+        updatedEpilogue.setMateriels(epilogue.getMateriels());
+        epilogueRepository.save(updatedEpilogue);
+        return updatedEpilogue;
+    }
 }

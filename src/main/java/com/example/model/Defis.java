@@ -66,13 +66,13 @@ public class Defis{
     private Type type;
 
     @Column(
-        name= "distanciel",
+        name= "mode",
         insertable = true,
         nullable = false,
         unique = false,
         updatable = true
     )
-    private Mode distanciel;
+    private Mode mode;
 
     @Column(
         name= "point",
@@ -144,14 +144,14 @@ public class Defis{
         this.setIdentifiant();   
     }
 
-    public Defis(String titre, String description, Type type, Mode distanciel, int point, int duree, String commentaire,
+    public Defis(String titre, String description, Type type, Mode mode, int point, int duree, String commentaire,
             String dateDeCreation, String dateDeModification, List<Visite> visites, Prologue prologue,
             Epilogue epilogue, List<Etape> etapes, List<MotCle> motsCles) {
         this.setIdentifiant();
         this.titre = titre;
         this.description = description;
         this.type = type;
-        this.distanciel = distanciel;
+        this.mode = mode;
         this.point = point;
         this.duree = duree;
         this.commentaire = commentaire;
@@ -202,12 +202,12 @@ public class Defis{
         this.type = type;
     }
 
-    public Mode getDistanciel() {
-        return distanciel;
+    public Mode getMode() {
+        return mode;
     }
 
-    public void setDistanciel(Mode distanciel) {
-        this.distanciel = distanciel;
+    public void setMode(Mode mode) {
+        this.mode = mode;
     }
 
     public int getPoint() {

@@ -3,16 +3,18 @@ package com.example.model;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-@Entity
+@Entity()
+// @DiscriminatorValue("i")
 @Table(
     name = "LesInforamtions"
 )
-@PrimaryKeyJoinColumn(name = "informationIdentifiant")
+// @PrimaryKeyJoinColumn(name = "informationIdentifiant")
 public class Information extends Etape {
 
     // // // // // // // //

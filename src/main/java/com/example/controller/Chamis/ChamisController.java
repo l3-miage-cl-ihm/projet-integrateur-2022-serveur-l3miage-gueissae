@@ -62,13 +62,13 @@ public class ChamisController {
     public ResponseEntity<Chamis> addNewChamis(@RequestBody Chamis chami) {
         try {
             chamisService.addNewChamis(chami);
-            return new ResponseEntity<>(chami, HttpStatus.CREATED);
+            return new ResponseEntity<Chamis>(chami, HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Chamis>( HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
     @PutMapping("/")
-    public ResponseEntity<Chamis> updateDefis(@RequestBody Chamis chamis) {
+    public ResponseEntity<Chamis> updateChamis(@RequestBody Chamis chamis) {
         try {
             Chamis c = chamisService.updateChamis(chamis);
             System.out.println(c.getEmail());

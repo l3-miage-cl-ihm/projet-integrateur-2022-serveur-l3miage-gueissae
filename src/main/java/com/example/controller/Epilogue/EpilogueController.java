@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,4 +57,16 @@ public class EpilogueController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @PutMapping("/")
+    public ResponseEntity<Epilogue> updateEpilogue(@RequestBody Epilogue epilogue) {
+        try{
+            Epilogue e =epilogueService.updateEpilogue(epilogue);
+            System.out.println(e.getIdentifiant());
+            return  new ResponseEntity<Epilogue>(e, HttpStatus.OK);
+        }   catch(IllegalStateException e){
+            return   new ResponseEntity<Epilogue>(HttpStatus.BAD_REQUEST);
+        }
+        
+    }
+    
 }

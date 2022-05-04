@@ -58,6 +58,16 @@ public class QuestionController {
         }
     
     }
+    @PutMapping("/")
+    public ResponseEntity<Question> updateQuestion(@RequestBody Question question) {
+        try {
+            Question q = questionService.updateQuestion(question);
+            System.out.println(q.getIdentifiant());
+            return new ResponseEntity<Question>(q, HttpStatus.OK);
+        } catch (IllegalStateException e) {
+            return new ResponseEntity<Question>( HttpStatus.BAD_REQUEST );
+        }
+    }
 
     //TO DO REMOVE
 }

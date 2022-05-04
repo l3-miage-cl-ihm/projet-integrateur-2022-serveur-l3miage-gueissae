@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,6 +55,16 @@ public class ArretController {
             return new ResponseEntity<Arret>(arret, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<Arret>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
+    @PutMapping("/")
+    public ResponseEntity<Arret> updateArret(@RequestBody Arret arret){
+        try {
+            Arret a = arretService.updateArret(arret);
+            return new ResponseEntity<Arret>(a, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<Arret>(HttpStatus.BAD_REQUEST);
         }
     }
 

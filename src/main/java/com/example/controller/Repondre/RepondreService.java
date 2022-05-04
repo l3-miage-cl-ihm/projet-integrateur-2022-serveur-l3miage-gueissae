@@ -29,4 +29,11 @@ public class RepondreService {
     public Repondre findByIdentifiant(Integer id){
         return repondreRepository.findByIdentifiant(id);
     }
+
+    public Repondre updateRepondre(Repondre repondre) {
+        Repondre updatedRepondre =  repondreRepository.findByIdentifiant(repondre.getIdentifiant());
+        updatedRepondre.setPoint(repondre.getPoint());
+        repondreRepository.save(updatedRepondre);
+        return updatedRepondre;
+    }
 }

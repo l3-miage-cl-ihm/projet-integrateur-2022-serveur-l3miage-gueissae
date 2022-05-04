@@ -15,7 +15,7 @@ import javax.persistence.Table;
     name = "LesMateriels"
 )
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Materiel{
+public class Materiel{
 
     // // // // // // // //
     //      COLONNE      //

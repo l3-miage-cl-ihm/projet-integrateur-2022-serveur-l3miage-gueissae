@@ -29,4 +29,14 @@ public class EtapeService {
     public Etape findByIdentifiant(Integer id){
         return etapeRepository.findByIdentifiant(id);
     }
+
+    public Etape updateEtape(Etape etape) {
+        Etape  updatedEtape = etapeRepository.findByIdentifiant(etape.getIdentifiant());
+        if (updatedEtape == null){
+            throw new IllegalArgumentException("etape does not exist");
+        }
+        updatedEtape.setNumero(etape.getNumero());
+        etapeRepository.save(updatedEtape);
+        return updatedEtape;
+    }
 }

@@ -18,12 +18,12 @@ public class DataLoader {
     private DefisRepository defisRepository;
     private VisiteRepository visiteRepository;
     private EpilogueRepository epilogueRepository;
-    private MaterielRepository materielRepository;
+    // private MaterielRepository materielRepository;
     private PrologueRepository prologueRepository;
     private MotCleRepository motCleRepository;
     private IndiceRepository indiceRepository;
     private ReponseRepository reponseRepository;
-    private EtapeRepository etapeRepository;
+    // private EtapeRepository etapeRepository;
     private QuestionRepository questionRepository;
     private TexteRepository texteRepository;
 
@@ -32,151 +32,251 @@ public class DataLoader {
             DefisRepository defisRepository, VisiteRepository visiteRepository, EpilogueRepository epilogueRepository,
             MaterielRepository materielRepository, PrologueRepository prologueRepository,
             MotCleRepository motCleRepository, IndiceRepository indiceRepository,
-            ReponseRepository reponseRepository, EtapeRepository etapeRepository, TexteRepository texteRepository, QuestionRepository questionRepository) {
+            ReponseRepository reponseRepository, EtapeRepository etapeRepository, TexteRepository texteRepository,
+            QuestionRepository questionRepository) {
         this.chamisRepository = chamisRepository;
         this.villeRepository = villeRepository;
         this.defisRepository = defisRepository;
         this.visiteRepository = visiteRepository;
         this.epilogueRepository = epilogueRepository;
-        this.materielRepository = materielRepository;
+        // this.materielRepository = materielRepository;
         this.prologueRepository = prologueRepository;
         this.motCleRepository = motCleRepository;
         this.indiceRepository = indiceRepository;
         this.reponseRepository = reponseRepository;
-        this.etapeRepository = etapeRepository;
+        // this.etapeRepository = etapeRepository;
         this.texteRepository = texteRepository;
         this.questionRepository = questionRepository;
-        LoadTexte();
-        LoadEpilogue();
-        LoadPrologue();
-        LoadMotsCles();
-        LoadIndices();
-        LoadReponses();
-        LoadQuestions();
-        LoadVisites();
-        LoadDefis();
-        LoadVille();
         LoadChamis();
     }
 
-    private void LoadTexte() {
+    private List<Materiel> LoadMaterielPrologue() {
         Texte textePro = new Texte(1, "texte du prologue");
+        List<Materiel> materiels = new ArrayList<Materiel>();
+        try {
+            materiels.add(textePro);
+            texteRepository.save(textePro);
+            // materiels.add(texteRepository.save(textePro)); a voir aussi
+            // materielRepository.save(textePro); à voir
+            return materiels;
+        } catch (Exception e) {
+            throw new IllegalStateException("Impossible de save les matériels du prologue.");
+        }
+    }
+
+    private List<Materiel> LoadMaterielEpilogue() {
         Texte texteEpi = new Texte(2, "texte de l'épilogue.");
-        texteRepository.save(textePro);
-        texteRepository.save(texteEpi);
-    }
-
-    private void LoadPrologue() {
-        Materiel materiel = materielRepository.getById(1);
         List<Materiel> materiels = new ArrayList<Materiel>();
-        materiels.add(materiel);
-        Prologue prologue = new Prologue(materiels);
-        prologueRepository.save(prologue);
+        try {
+            materiels.add(texteEpi);
+            texteRepository.save(texteEpi);
+            // materielRepository.save(texteEpi); à voir
+            return materiels;
+        } catch (Exception e) {
+            throw new IllegalStateException("Impossible de save les matériels de l'épilogue.");
+        }
     }
 
-    private void LoadEpilogue() {
-        Materiel materiel = materielRepository.getById(2);
-        List<Materiel> materiels = new ArrayList<Materiel>();
-        materiels.add(materiel);
-        Epilogue epilogue = new Epilogue(materiels);
-        epilogueRepository.save(epilogue);
+    private Prologue LoadPrologue() {
+        Prologue prologue = new Prologue(LoadMaterielPrologue());
+        try {
+            prologueRepository.save(prologue);
+            return prologue;
+        } catch (Exception e) {
+            throw new IllegalStateException("Impossible de save le prolog.");
+        }
     }
 
-    private void LoadMotsCles() {
+    private Epilogue LoadEpilogue() {
+        Epilogue epilogue = new Epilogue(LoadMaterielEpilogue());
+        try {
+            epilogueRepository.save(epilogue);
+            return epilogue;
+        } catch (Exception e) {
+            throw new IllegalStateException("Impossible de save l'épilogue.");
+        }
+    }
+
+    private List<MotCle> LoadMotsCles() {
         MotCle mot1 = new MotCle("test1");
         MotCle mot2 = new MotCle("test2");
-        motCleRepository.save(mot1);
-        motCleRepository.save(mot2);
+        List<MotCle> motCleList = new ArrayList<MotCle>();
+        motCleList.add(mot1);
+        motCleList.add(mot2);
+        try {
+            for (MotCle mot : motCleList) {
+                motCleRepository.save(mot);
+            }
+            return motCleList;
+        } catch (Exception e) {
+            throw new IllegalStateException("Impossible de save les mots clés.");
+        }
     }
 
-    private void LoadIndices() {
-        Indice indice1 = new Indice("très", "cet question est très très", 1);
+    private List<Indice> LoadIndices() {
+        Indice indice1 = new Indice("très", "cet visite est très très", 1);
         Indice indice2 = new Indice("difficile", "difficle vraiment", 1);
-        indiceRepository.save(indice1);
-        indiceRepository.save(indice2);
+        List<Indice> indices = new ArrayList<Indice>();
+        indices.add(indice1);
+        indices.add(indice2);
+        try {
+            for (Indice indice : indices) {
+                indiceRepository.save(indice);
+            }
+            return indices;
+        } catch (Exception e) {
+            throw new IllegalStateException("Impossible de save les indices.");
+        }
     }
 
-    private void LoadReponses(){
-        Texte texte1 = new Texte(1,"réponse A");
-        Texte texte2 = new Texte(2,"réponse B");
-        Texte texte3 = new Texte(3,"réponse C");
-        Texte texte4 = new Texte(4,"réponse D");
-        Reponse reponse1 = new Reponse(texte1, false);
-        Reponse reponse2 = new Reponse(texte2, false);
-        Reponse reponse3 = new Reponse(texte3, false);
-        Reponse reponse4 = new Reponse(texte4, true);
-        texteRepository.save(texte1);
-        texteRepository.save(texte2);
-        texteRepository.save(texte3);
-        texteRepository.save(texte4);
-        reponseRepository.save(reponse1);
-        reponseRepository.save(reponse2);
-        reponseRepository.save(reponse3);
-        reponseRepository.save(reponse4);
+    private List<Texte> LoadTextesReponses() {
+
+        Texte texte1 = new Texte(1, "réponse A");
+        Texte texte2 = new Texte(2, "réponse B");
+        Texte texte3 = new Texte(3, "réponse C");
+        Texte texte4 = new Texte(4, "réponse D");
+
+        List<Texte> texteList = new ArrayList<Texte>();
+
+        texteList.add(texte1);
+        texteList.add(texte2);
+        texteList.add(texte3);
+        texteList.add(texte4);
+
+        try {
+            for (Texte t : texteList) {
+                texteRepository.save(t);
+            }
+            return texteList;
+        } catch (Exception e) {
+            throw new IllegalStateException("Impossible de save les textes.");
+        }
     }
 
-    private void LoadQuestions() {
-        List<Indice> indiceEtapes = indiceRepository.findAll();
-        List<Reponse> reponseList = reponseRepository.findAll();
+    private List<Repondre> LoadRepondre() {
+        List<Repondre> repondreList = new ArrayList<Repondre>();
+        return repondreList;
+    }
+
+    private List<Reponse> LoadReponses() {
+
+        List<Texte> textes = new ArrayList<Texte>();
+        List<Reponse> reponses = new ArrayList<Reponse>();
+
+        textes = LoadTextesReponses();
+
+        Reponse reponse1 = new Reponse(textes.get(0), false);
+        reponses.add(reponse1);
+        Reponse reponse2 = new Reponse(textes.get(1), false);
+        reponses.add(reponse2);
+        Reponse reponse3 = new Reponse(textes.get(2), false);
+        reponses.add(reponse3);
+        Reponse reponse4 = new Reponse(textes.get(3), true);
+        reponses.add(reponse4);
+
+        try {
+            for (Reponse reponse : reponses) {
+                reponseRepository.save(reponse);
+            }
+            return reponses;
+        } catch (Exception e) {
+            throw new IllegalStateException("Impossible de save les réponses.");
+        }
+    }
+
+    private List<Etape> LoadQuestions() {
+        List<Indice> indiceEtapes = new ArrayList<Indice>();
+        List<Reponse> reponseList = new ArrayList<Reponse>();
+        List<Etape> questions = new ArrayList<Etape>();
+        indiceEtapes = LoadIndices();
+        reponseList = LoadReponses();
         Question question1 = new Question(1, "question1", "première question ?", reponseList, indiceEtapes);
-        questionRepository.save(question1);
+
+        try {
+            questions.add(question1);
+            questionRepository.save(question1);
+            return questions;
+        } catch (Exception e) {
+            throw new IllegalStateException("Impossible de save les questions.   "+e);
+        }
     }
 
-    private void LoadVisites() {
+    private List<Visite> LoadVisites() {
         Mode modeVisite = Mode.PRESENTIEL;
         Statut statutVisite = Statut.ENCOURS;
+        List<Visite> visites = new ArrayList<Visite>();
         List<Repondre> repondre = new ArrayList<Repondre>();
-        List<Indice> indiceVisite = indiceRepository.findAll();
+        List<Indice> indiceVisite = new ArrayList<Indice>();
+        repondre = LoadRepondre();
+        indiceVisite = LoadIndices();
         Visite visite1 = new Visite("03/05/2022", "13:41", modeVisite, statutVisite, 4, 999, "difficile", repondre,
                 indiceVisite);
-        visiteRepository.save(visite1);
+        try {
+            visiteRepository.save(visite1);
+            return visites;
+        } catch (Exception e) {
+            throw new IllegalStateException("Impossible de save la visite.");
+        }
     }
 
     private List<Defis> LoadDefis() {
+
         Type typeDefi = Type.CHALLENGE;
         Mode modeDefi = Mode.PRESENTIEL;
         List<Defis> defisList = new ArrayList<Defis>();
         List<Visite> visitesVoulues = new ArrayList<Visite>();
-        List<Etape> etapesVoulues = new ArrayList<Etape>();
+        // List<Etape> etapesVoulues = new ArrayList<Etape>();
         List<MotCle> motsClesDefis = new ArrayList<MotCle>();
-        // Prologue prologueDefis = new Prologue();
-        // Epilogue epilogueDefis = new Epilogue();
-        // List<Question> questionsVoulues = new ArrayList<Question>();
+        Prologue prologueDefis = new Prologue();
+        Epilogue epilogueDefis = new Epilogue();
+        List<Etape> questionsVoulues = new ArrayList<Etape>();
+        // List<Etape> etapesVoulues = new ArrayList<Etape>();
 
-        visiteRepository.findAll();
+        visitesVoulues = LoadVisites();
 
-        etapeRepository.findAll(); // à voir, ptet un bug
+        // etapesVoulues = questionsVoulues;
 
-        // questionRepository.findAll();
+        motsClesDefis = LoadMotsCles();
 
-        motCleRepository.findAll();
 
-        Prologue prologue = prologueRepository.findByIdentifiant(1);// passer en valeur de retour
-        Epilogue epilogue = epilogueRepository.findByIdentifiant(1);// passer en valeur de retour pour gérer les erreurs sur ça
+        prologueDefis = LoadPrologue();
+
+        epilogueDefis = LoadEpilogue();
+
+        questionsVoulues = LoadQuestions();
+
         Defis defi = new Defis("bonjour", "premier défi !!", typeDefi, modeDefi, 5, 900, "aucuns.", "02/05/2022",
-                "02/05/2022", visitesVoulues, prologue, epilogue, etapesVoulues/*questionsVoulues*/ , motsClesDefis);
+                "02/05/2022", visitesVoulues, prologueDefis, epilogueDefis, /* etapesVoulues */ questionsVoulues,
+                motsClesDefis);
         try {
             defisRepository.save(defi);
             defisList.add(defi);
             return defisList;
         } catch (Exception e) {
-            throw new IllegalStateException("List de défis non trouvée");
+            throw new IllegalStateException("Liste des défis non sauvegardée.");
         }
     }
 
-    private void LoadVille() {
+    private Ville LoadVille() {
         Ville grenoble = new Ville("grenoble");
-        villeRepository.save(grenoble);
+        try {
+            villeRepository.save(grenoble);
+            return grenoble;
+        } catch (Exception e) {
+            throw new IllegalStateException("La ville n'a pas été sauvegardée.");
+        }
     }
 
     private void LoadChamis() {
-        List<Ville> villes = villeRepository.findAll();
-        // Ville villeVoulue = villeRepository.getById(1); // en gros il trouves pas la ville car bah autant c pas son id mais bon ça tu le savais déjà mon con.
-        // du coup pour régler le soucis faut ptet faire des valeurs de retour à chaque fonction, qui renvoie ce que tu veux, après c ptet pas la solution.
-        Ville villeVoulue = villes.get(0);
-        List<Defis> defisVoulus = null;
-        List<Visite> visitesVoulues = null;
-        chamisRepository.save(
-                new Chamis("justin.goudon@outlook.fr", "goudonju", 21, "a", villeVoulue, defisVoulus, visitesVoulues));
+        Ville villeVoulue = LoadVille();
+        List<Defis> defisVoulus = LoadDefis();
+        List<Visite> visitesVoulues = LoadVisites();
+        try {
+            chamisRepository.save(
+                    new Chamis("justin.goudon@outlook.fr", "goudonju", 21, "a", villeVoulue, defisVoulus,
+                            visitesVoulues));
+        } catch (Exception e) {
+            throw new IllegalStateException("Impossible de créer le chamis");
+        }
     }
 }

@@ -29,4 +29,15 @@ public class ImageService {
     public Image findByIdentifiant(Integer id) {
         return imageRepository.findByIdentifiant(id);
     }
+    public Image updateImage(Image image) {
+        Image updatedImage = imageRepository.findByIdentifiant(image.getId());
+        if (updatedImage == null) {
+            throw new IllegalArgumentException("image doesn't exist");
+        }
+        updatedImage.setChemin(image.getChemin());
+        updatedImage.setLabel(image.getLabel());
+        updatedImage.setNumero(image.getNumero());
+        imageRepository.save(updatedImage);
+        return updatedImage;
+    }
 }

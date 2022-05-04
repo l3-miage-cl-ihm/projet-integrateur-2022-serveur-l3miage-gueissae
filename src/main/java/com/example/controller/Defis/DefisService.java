@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.example.model.Chamis;
 import com.example.model.Defis;
+import com.example.model.Etape;
 import com.example.model.MotCle;
+import com.example.model.Question;
 import com.example.repository.ChamisRepository;
 import com.example.repository.DefisRepository;
 import com.example.repository.MotCleRepository;
@@ -51,7 +53,7 @@ public class DefisService {
         updatedDefi.setTitre(defi.getTitre());
         updatedDefi.setDescription(defi.getDescription());
         updatedDefi.setType(defi.getType());
-        updatedDefi.setDistanciel(defi.getDistanciel());
+        updatedDefi.setMode(defi.getMode());
         updatedDefi.setPoint(defi.getPoint());
         updatedDefi.setDuree(defi.getDuree());
         updatedDefi.setCommentaire(defi.getCommentaire());
@@ -63,6 +65,11 @@ public class DefisService {
         updatedDefi.setPrologue(defi.getPrologue());
         updatedDefi.setEpilogue(defi.getEpilogue());
         updatedDefi.setEtapes(defi.getEtapes());
+        // for (Etape e : updatedDefi.getEtapes()) {
+        //     if(e instanceof Question){
+        //     }
+        // }
+        updatedDefi.getEtapes();
         updatedDefi.setVisites(defi.getVisites());
 
         return updatedDefi;

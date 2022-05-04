@@ -29,4 +29,16 @@ public class QuestionService {
     public Question findByIdentifiant(Integer id){
         return questionRepository.findByIdentifiant(id);
     }
+
+    public Question updateQuestion(Question question) {
+        Question  updatedQuestion = questionRepository.findByIdentifiant(question.getIdentifiant());
+        updatedQuestion.setNumero(question.getNumero());
+        updatedQuestion.setDescription(question.getDescription());
+        updatedQuestion.setIndices(question.getIndices());
+        updatedQuestion.setLabel(question.getLabel());
+        updatedQuestion.setRepondres(question.getRepondres());
+        updatedQuestion.setReponses(question.getReponses());
+        questionRepository.save(updatedQuestion);
+        return updatedQuestion;
+    }
 }

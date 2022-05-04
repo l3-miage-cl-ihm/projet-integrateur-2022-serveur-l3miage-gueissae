@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,6 +55,16 @@ public class RepondreController {
             return new ResponseEntity<Repondre>(repondre, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<Repondre>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    @PutMapping("/")
+    public ResponseEntity<Repondre> updateRepondre(@RequestBody Repondre repondre) {
+        try {
+            Repondre r = repondreService.updateRepondre(repondre);
+            return new ResponseEntity<Repondre>(r,HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<Repondre>(HttpStatus.BAD_REQUEST);
         }
     }
 

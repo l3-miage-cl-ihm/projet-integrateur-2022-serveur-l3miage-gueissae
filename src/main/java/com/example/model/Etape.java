@@ -8,13 +8,24 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
 
 @Entity
 @Table (
     name = "LesEtapes"
 )
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+// @MappedSuperclass
+// @DiscriminatorColumn(name="type_etape")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes(
+{
+    @Type(value = Question.class, name = "Question"),
+    @Type(value = Information.class, name = "Information")
+})
 public abstract class Etape {
 
     // // // // // // // //
