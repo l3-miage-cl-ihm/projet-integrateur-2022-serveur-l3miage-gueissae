@@ -1,13 +1,10 @@
 package com.example.model;
 
-
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import java.util.List;
 
 import javax.persistence.Column;
 
@@ -23,6 +20,7 @@ public class Indice{
     // // // // // // // //.
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(
         name="identifiant",
         insertable = true,
@@ -30,7 +28,7 @@ public class Indice{
         unique=true,
         updatable = false
     )
-    private String identifiant;
+    private Integer identifiant;
 
 
     @Column(
@@ -73,7 +71,6 @@ public class Indice{
         this.label = label;
         this.description = description;
         this.points = points;
-        
     }
 
 

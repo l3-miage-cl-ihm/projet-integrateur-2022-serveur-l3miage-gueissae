@@ -5,12 +5,14 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(
     name = "LesInforamtions"
 )
+@PrimaryKeyJoinColumn(name = "informationIdentifiant")
 public class Information extends Etape {
 
     // // // // // // // //

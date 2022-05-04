@@ -50,7 +50,7 @@ public class EtapeController {
     public ResponseEntity<Etape> addNewEtape(@RequestBody Etape etape) {
         try {
             etapeService.addNewEtape(etape);
-            return new ResponseEntity<>(etape, HttpStatus.CREATED);
+            return new ResponseEntity<Etape>(etape, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

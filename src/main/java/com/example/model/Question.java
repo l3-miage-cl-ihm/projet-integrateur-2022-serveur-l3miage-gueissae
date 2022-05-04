@@ -5,14 +5,14 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-
-import com.example.enumeration.Type;
 
 @Entity
 @Table(
     name = "LesQuestions"
 )
+@PrimaryKeyJoinColumn(name = "questionIdentifiant")
 public class Question extends Etape{
 
 
