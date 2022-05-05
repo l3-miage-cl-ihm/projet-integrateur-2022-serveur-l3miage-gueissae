@@ -21,7 +21,7 @@ import javax.persistence.UniqueConstraint;
 public class Arret {
 
     // // // // // // // //
-    //      COLONNE      //
+    //      COLONNES     //
     // // // // // // // //
     
     @Id
@@ -67,7 +67,7 @@ public class Arret {
 
 
     // // // // // // // // 
-    //    CONSTRUCTEUR   //
+    //   CONSTRUCTEURS   //
     // // // // // // // //
 
     public Arret() {}

@@ -14,7 +14,7 @@ public class Texte extends Materiel {
 
 
     // // // // // // // //
-    //      COLONNE      //
+    //      COLONNES     //
     // // // // // // // //
 
     @Column(
@@ -28,7 +28,7 @@ public class Texte extends Materiel {
 
 
     // // // // // // // // 
-    //    CONSTRUCTEUR   //
+    //   CONSTRUCTEURS   //
     // // // // // // // //
 
     public Texte() {}

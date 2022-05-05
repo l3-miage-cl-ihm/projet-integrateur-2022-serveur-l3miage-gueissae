@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Video extends Materiel {
 
     // // // // // // // //
-    //      COLONNE      //
+    //     COLONNES      //
     // // // // // // // //
 
     @Column(
@@ -38,7 +38,7 @@ public class Video extends Materiel {
 
 
     // // // // // // // // 
-    //    CONSTRUCTEUR   //
+    //   CONSTRUCTEURS   //
     // // // // // // // //
 
     public Video() {}

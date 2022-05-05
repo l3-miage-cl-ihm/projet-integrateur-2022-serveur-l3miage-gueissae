@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Image extends Materiel{
 
     // // // // // // // //
-    //      COLONNE      //
+    //      COLONNES     //
     // // // // // // // //
     
     @Column(
@@ -36,7 +36,7 @@ public class Image extends Materiel{
 
 
     // // // // // // // // 
-    //    CONSTRUCTEUR   //
+    //   CONSTRUCTEURS   //
     // // // // // // // //
 
     public Image() {}

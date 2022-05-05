@@ -22,7 +22,7 @@ import com.example.enumeration.Statut;
 public class Visite {
 
     // // // // // // // //
-    //      COLONNE      //
+    //      COLONNES     //
     // // // // // // // //
 
     @Id
@@ -107,7 +107,7 @@ public class Visite {
 
     
     // // // // // // // // 
-    //    CONSTRUCTEUR   //
+    //   CONSTRUCTEURS   //
     // // // // // // // //
     
     public Visite(){}

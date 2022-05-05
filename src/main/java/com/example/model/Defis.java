@@ -119,6 +119,15 @@ public class Defis{
     )
     private String dateDeModification;
 
+    @Column(
+        name= "actif",
+        insertable = true,
+        nullable = false,
+        unique = false,
+        updatable = true
+    )
+    private Boolean actif;
+
     @OneToMany
     private List<Visite> visites;
 
@@ -137,7 +146,7 @@ public class Defis{
 
 
     // // // // // // // // 
-    //    CONSTRUCTEUR   //
+    //   CONSTRUCTEURS   //
     // // // // // // // //
 
     public Defis(){
@@ -146,7 +155,7 @@ public class Defis{
 
     public Defis(String titre, String description, Type type, Mode mode, int point, int duree, String commentaire,
             String dateDeCreation, String dateDeModification, List<Visite> visites, Prologue prologue,
-            Epilogue epilogue, List<Etape> etapes, List<MotCle> motsCles) {
+            Epilogue epilogue, List<Etape> etapes, List<MotCle> motsCles, Boolean actif) {
         this.setIdentifiant();
         this.titre = titre;
         this.description = description;
@@ -162,6 +171,7 @@ public class Defis{
         this.epilogue = epilogue;
         this.etapes = etapes;
         this.motsCles = motsCles;
+        this.actif = actif;
     }
 
 
@@ -250,6 +260,14 @@ public class Defis{
         this.dateDeModification = dateDeModification;
     }
 
+    public Boolean getActif(){
+        return actif;
+    }
+
+    public void setActif(Boolean actif) {
+        this.actif = actif;
+    }
+
     public List<Visite> getVisites() {
         return visites;
     }
@@ -305,5 +323,7 @@ public class Defis{
     public void  suppressMotCle(MotCle motcle){
         this.motsCles.remove(motcle);
     }
+
+
 
 }

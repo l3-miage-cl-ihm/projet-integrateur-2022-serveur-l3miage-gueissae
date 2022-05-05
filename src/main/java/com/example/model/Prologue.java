@@ -36,7 +36,7 @@ public class Prologue {
 
 
     // // // // // // // // 
-    //    CONSTRUCTEUR   //
+    //   CONSTRUCTEURS   //
     // // // // // // // //
 
     public Prologue(){}

@@ -230,6 +230,7 @@ public class DataLoader {
         Prologue prologueDefis = new Prologue();
         Epilogue epilogueDefis = new Epilogue();
         List<Etape> questionsVoulues = new ArrayList<Etape>();
+        Boolean actif = true;
         // List<Etape> etapesVoulues = new ArrayList<Etape>();
 
         visitesVoulues = LoadVisites();
@@ -247,7 +248,7 @@ public class DataLoader {
 
         Defis defi = new Defis("bonjour", "premier défi !!", typeDefi, modeDefi, 5, 900, "aucuns.", "02/05/2022",
                 "02/05/2022", visitesVoulues, prologueDefis, epilogueDefis, /* etapesVoulues */ questionsVoulues,
-                motsClesDefis);
+                motsClesDefis,actif);
         try {
             defisRepository.save(defi);
             defisList.add(defi);
@@ -271,10 +272,11 @@ public class DataLoader {
         Ville villeVoulue = LoadVille();
         List<Defis> defisVoulus = LoadDefis();
         List<Visite> visitesVoulues = LoadVisites();
+        Boolean active = true;
         try {
             chamisRepository.save(
                     new Chamis("justin.goudon@outlook.fr", "goudonju", 21, "a", villeVoulue, defisVoulus,
-                            visitesVoulues));
+                            visitesVoulues,active));
         } catch (Exception e) {
             throw new IllegalStateException("Impossible de créer le chamis");
         }

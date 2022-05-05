@@ -18,8 +18,6 @@ import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
     name = "LesEtapes"
 )
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-// @MappedSuperclass
-// @DiscriminatorColumn(name="type_etape")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes(
 {
@@ -54,7 +52,7 @@ public abstract class Etape {
 
 
     // // // // // // // // 
-    //    CONSTRUCTEURS  //
+    //   CONSTRUCTEURS   //
     // // // // // // // //
 
     public Etape(){}
