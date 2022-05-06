@@ -30,6 +30,7 @@ public class EpilogueController {
         this.epilogueService = epilogueService;
     }
 
+    // TODO: unused
     @GetMapping("/")
     public ResponseEntity<List<Epilogue>> getAllEpilogues(){
         return new ResponseEntity<List<Epilogue>>(epilogueService.getAllEpilogues(), HttpStatus.OK);

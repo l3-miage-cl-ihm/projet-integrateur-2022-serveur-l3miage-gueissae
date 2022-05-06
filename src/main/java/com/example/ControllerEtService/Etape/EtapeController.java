@@ -28,6 +28,7 @@ public class EtapeController {
         this.etapeService = etapeService;
     }
 
+    // TODO: unused
     @GetMapping("/")
     public ResponseEntity<List<Etape>> getAllEtapes(){
         return new ResponseEntity<List<Etape>>(etapeService.getAllEtapes(), HttpStatus.OK);
@@ -56,6 +57,8 @@ public class EtapeController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    //TODO: checker si la personne qui demande la ressource à le droit d'y accèder
     @PutMapping("/")
     public ResponseEntity<Etape> updateEtape(@RequestBody Etape etape) {
         try {
@@ -65,5 +68,4 @@ public class EtapeController {
             return new ResponseEntity<Etape>( HttpStatus.BAD_REQUEST);
         }
     }
-    
 }

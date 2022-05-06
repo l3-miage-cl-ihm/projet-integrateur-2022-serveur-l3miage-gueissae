@@ -4,14 +4,12 @@ package com.example.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(
     name = "LesVideos"
 )
-@PrimaryKeyJoinColumn(name = "videoIdentifiant")
 public class Video extends Materiel {
 
     // // // // // // // //

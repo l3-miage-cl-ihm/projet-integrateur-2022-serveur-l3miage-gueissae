@@ -189,7 +189,7 @@ public class DataLoader {
         List<Reponse> reponseList = new ArrayList<Reponse>();
         List<Etape> questions = new ArrayList<Etape>();
         indiceEtapes = LoadIndices();
-        reponseList = LoadReponses();
+        // reponseList = LoadReponses();
         Question question1 = new Question(1, "question1", "première question ?", reponseList, indiceEtapes);
 
         try {

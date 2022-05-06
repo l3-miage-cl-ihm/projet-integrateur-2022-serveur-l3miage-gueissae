@@ -16,59 +16,57 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
 @RestController
 @CrossOrigin
 @RequestMapping("/api/Video")
 public class VideoController {
     private final VideoService videoService;
+
     @Autowired
-    public VideoController(VideoService videoService){
-        this.videoService=videoService;
+    public VideoController(VideoService videoService) {
+        this.videoService = videoService;
     }
+
     @GetMapping("/")
-    public ResponseEntity<List<Video>> getAllVideos(){
+    public ResponseEntity<List<Video>> getAllVideos() {
         return new ResponseEntity<List<Video>>(videoService.getAllVideos(), HttpStatus.OK);
     }
 
     @GetMapping("/{identifiant}")
-    public ResponseEntity<Video> getVideoByIdentifiant(@PathVariable(value="identifiant")Integer id){
-        try  {
+    public ResponseEntity<Video> getVideoByIdentifiant(@PathVariable(value = "identifiant") Integer id) {
+        try {
             Video video = videoService.findByIdentifiant(id);
-            if(video!=null){
-                return new ResponseEntity<Video>(video,HttpStatus.OK);
-            }
-            else{
+            if (video != null) {
+                return new ResponseEntity<Video>(video, HttpStatus.OK);
+            } else {
                 return new ResponseEntity<Video>(HttpStatus.BAD_REQUEST);
             }
 
-        } catch(Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<Video>(HttpStatus.BAD_REQUEST);
         }
-    
+
     }
-    @PostMapping("/{identifiant}")
-    public ResponseEntity<Video> registerNewVideo(@RequestBody Video video,@PathVariable(value="identifiant")Integer id){
-        try{
-        Video v = videoService.addNewVideo(id,video);
-        System.out.println(v.getId());
-        return new ResponseEntity<Video>(v, HttpStatus.OK);
-    }
-    catch(IllegalStateException e){
-        return new ResponseEntity<Video>(HttpStatus.BAD_REQUEST);
-    }
+
+    @PostMapping("/")
+    public ResponseEntity<Video> registerNewVideo(@RequestBody Video video) {
+        try {
+            Video v = videoService.addNewVideo(video);
+            System.out.println(v.getId());
+            return new ResponseEntity<Video>(v, HttpStatus.OK);
+        } catch (IllegalStateException e) {
+            return new ResponseEntity<Video>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @DeleteMapping("/{identifiant}")
-    public ResponseEntity<Video> deleteVideo(@PathVariable(value="identifiant")Integer id){
-        try{
+    public ResponseEntity<Video> deleteVideo(@PathVariable(value = "identifiant") Integer id) {
+        try {
             videoService.deleteVideo(id);
-            return new ResponseEntity<Video>( HttpStatus.OK);
-        }   catch(IllegalStateException e){
+            return new ResponseEntity<Video>(HttpStatus.OK);
+        } catch (IllegalStateException e) {
             return new ResponseEntity<Video>(HttpStatus.BAD_REQUEST);
         }
     }
-    
-    
 
 }

@@ -33,6 +33,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class DefisService {
 
+    // TODO: commentaires et clean up
+
     private final DefisRepository defisRepository;
     private final ChamisRepository chamisRepository;
     private final MotCleRepository motCleRepository;
@@ -102,7 +104,18 @@ public class DefisService {
 
         return updatedDefi;
     }
-
+/**
+* Ajoute un motclé dans la liste d'un défi
+* 
+* Cette  méthode recherche le mot en utilisant le label de ce dernier
+* pour ensuite l'ajouter à la liste du défi qui sera renseigné par son id.
+* Ce faisant nous renverrons le défi modifiées. 
+*
+* @param  mot  le label du mot à ajouter au défi
+* @param  idDefi  l'identifiant du défi auquel on va ajouter le mot 
+* @return  updatedDefi : le defi avec le motclé ajouter a la liste 
+* @see   Defis
+*/
     @Transactional
     public Defis addMotCleDefis(String mot, String idDefi) {
         MotCle motCle = motCleRepository.findByMot(mot);
@@ -111,7 +124,18 @@ public class DefisService {
         updatedDefi.addMotCle(motCle);
         return updatedDefi;
     }
-
+/**
+* Retire un motclé de la liste d'un défi
+* 
+* Cette  méthode recherche le mot en utilisant le label de ce dernier
+* pour ensuite le retirer à la liste du défi qui sera renseigné par son id.
+* Ce faisant nous renverrons le défi modifiés. 
+*
+* @param  mot  le label du mot à retirer au défi
+* @param  idDefi  l'identifiant du défi auquel on va retirer le mot 
+* @return  updatedDefi : le defi avec le motclé retirer a la liste 
+* @see   Defis
+*/
     @Transactional
     public Defis removeMotCleDefis(String mot, String idDefi) {
         MotCle motCle = motCleRepository.findByMot(mot);
@@ -120,23 +144,63 @@ public class DefisService {
         updatedDefi.suppressMotCle(motCle);
         return updatedDefi;
     }
-    public void deleteDefis(String  idDefi){
+
+/**
+* Retire un défi ainsi que tout ce qui est lié uniquement à ce défi dans la base de donnée
+* si ce dernier n'a aucune visite, sinon on le cache en changeant son attribut actif
+* 
+* Cette  méthode recherche le défi que nous souhaitons rétirer de la base 
+* à l'aide de son identifiant. Pour ensuite recupérer  son prologue, son épilogue,la liste
+* des visites et enfin la liste des étapes. On vérifie deja si la liste des visites est vides.
+* Si la liste est vides, on fait appel aux fonctions annexes pour supprimer la listes des étapes ainsi 
+* que tout se qui est lié aux étapes, le prologue et l'epilogue et tout le matériel lié à ces objets.
+* Si la liste des visites n'est pas vide, on modifie simplement la valeur de l'attibut actif du défi
+*en le passant en false pour le cacher.
+*
+* @param  idDefi  l'identifiant du défi qu'on veut supprimer de la base
+* @return  void on en retourne rien
+* @see   Defis
+*/
+    @Transactional
+    public void deleteDefis(String idDefi){
+        System.out.println("Défis 1 Service");
+        System.out.println("L'id :::::::::::::::::::: "+idDefi);
         Defis deleteDefis = defisRepository.findById(idDefi).orElseThrow(() -> new IllegalArgumentException("Defis not found"));
+        System.out.println("Défis 1.2 Service");
         List<Visite> listeVisites = deleteDefis.getVisites();
         List<Etape> listeEtapes = deleteDefis.getEtapes();
         Prologue prologue = deleteDefis.getPrologue();
         Epilogue epilogue = deleteDefis.getEpilogue();
+        System.out.println("Défis 2 Service");
         
-        if(listeVisites==null){// SI LE DEFI N'A PAS DE VISITE
+        if(listeVisites==null){
+            System.out.println("Défis 3 Service");
             deleteEtapeDefis(listeEtapes); 
             deletePrologueDefis(prologue);
             deleteEpilogueDefis(epilogue);       
             defisRepository.delete(deleteDefis);
         } else {
-            deleteDefis.setActif(false);
+            System.out.println("Défis 4 Service");
+            System.out.println("Etat d'activité du défis de la fct avant modif"+deleteDefis.getActif());
+            deleteDefis.setActif();
+            // defisRepository.save(deleteDefis);
+            System.out.println("Etat d'activité du défis de la fct après modif"+deleteDefis.getActif());
+            Defis defi = defisRepository.findById(deleteDefis.getIdentifiant()).get();
+            System.out.println("Défis 5 Service, Etat d'activité du défi récup après modif "+defi.getActif());
         }
     }
-    
+/**
+* Supprime les étapes d'un défi en supprimant
+* 
+* Cette  méthode recherche le mot en utilisant le label de ce dernier
+* pour ensuite le retirer à la liste du défi qui sera renseigné par son id.
+* Ce faisant nous renverrons le défi modifiés. 
+*
+* @param  mot  le label du mot à retirer au défi
+* @param  idDefi  l'identifiant du défi auquel on va retirer le mot 
+* @return  updatedDefi : le defi avec le motclé retirer a la liste 
+* @see   Defis
+*/
     public void deleteEtapeDefis(List<Etape> etapes){
         for (Etape etape : etapes) {
             if(etape instanceof Question){

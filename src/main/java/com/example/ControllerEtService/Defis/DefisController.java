@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/defis")
+@RequestMapping("/api/defis") // TODO: supprimer le s
 public class DefisController {
 
     private final DefisService defisService;
@@ -52,7 +52,7 @@ public class DefisController {
             System.out.println(d.getIdentifiant());
             return new ResponseEntity<Defis>(d, HttpStatus.OK);
         } catch (IllegalArgumentException e) {
-            return new ResponseEntity<Defis>( HttpStatus.BAD_REQUEST );
+            return new ResponseEntity<Defis>(HttpStatus.BAD_REQUEST );
         }
     }
     @DeleteMapping("/motcle/{defi}/{mot}")
@@ -75,12 +75,16 @@ public class DefisController {
             return new ResponseEntity<Defis>(HttpStatus.BAD_REQUEST);
         }
     }
-    @DeleteMapping("/")
-    public ResponseEntity<Defis> deleteDefis(@RequestBody String identifiant) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Defis> deleteDefis(@PathVariable(value="id") String identifiant) {
+        System.out.println("Défis 1 Controller");
         try{
+            System.out.println("Défis 2 Controller");
             defisService.deleteDefis(identifiant);
+            System.out.println("Défis 3 Controller");
             return new ResponseEntity<Defis>(HttpStatus.OK);
         } catch(IllegalArgumentException e ){
+            System.out.println("Défis 4 Controller");
             return new ResponseEntity<Defis>(HttpStatus.BAD_REQUEST);
         }
     }

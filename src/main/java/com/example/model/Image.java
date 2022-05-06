@@ -2,14 +2,12 @@ package com.example.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(
     name = "LesImages"
 )
-@PrimaryKeyJoinColumn(name = "imageIdentifiant")
 public class Image extends Materiel{
 
     // // // // // // // //

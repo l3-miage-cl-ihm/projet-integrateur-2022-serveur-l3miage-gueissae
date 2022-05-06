@@ -264,8 +264,8 @@ public class Defis{
         return actif;
     }
 
-    public void setActif(Boolean actif) {
-        this.actif = actif;
+    public void setActif() {
+        this.actif = !this.actif;
     }
 
     public List<Visite> getVisites() {

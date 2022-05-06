@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.CascadeType;
 
 import javax.persistence.Column;
 
@@ -42,7 +43,8 @@ public class Reponse {
     )
     private boolean bonneReponse;
 
-    @OneToOne
+    @OneToOne(
+        cascade = CascadeType.ALL)
     private Materiel materiel;
 
 

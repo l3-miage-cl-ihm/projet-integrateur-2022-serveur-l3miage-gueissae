@@ -23,19 +23,44 @@ public class EpilogueService {
         this.materielRepository = materielRepository;
     }
 
+    // TODO: unused
     public List<Epilogue> getAllEpilogues() {
         return epilogueRepository.findAll();
     }
 
+    /**
+     * Permet d'ajouter un épilogue à la base de données grâce à la fonction
+     * save de epilogueRepository implémentée par SpringBoot.
+     * 
+     * @param epilogue L'épilogue que l'on veux utiliser.
+     * @return void
+     */
     public void addNewEpilogue(Epilogue epilogue){
         epilogueRepository.save(epilogue);
     }
 
+    /**
+     * Permet de trouver un épilogue dans la base de données grâce à son
+     * id et en utilisant la fonction findByIdentifiant de epilogueRepository
+     * implémentée par SpringBoot.
+     * 
+     * @param id L'identifiant de l'épilogue que l'on recherche.
+     * @return L'épilogue que l'on recherche.
+     */
     public Epilogue findByIdentifiant(Integer id){
         return epilogueRepository.findByIdentifiant(id);
     }
+
+    /**
+     * Permet de mettre à jour l'épilogue que l'on veux dans la base de données.
+     * On va d'abord chercher l'épilogue que l'on veux
+     * 
+     * 
+     * @param epilogue L'épilogue que l'on veux mettre à jour.
+     * @return L'épilogue mis à jour.
+     */
     public Epilogue updateEpilogue(Epilogue epilogue) {
-        Epilogue  updatedEpilogue = epilogueRepository.findByIdentifiant(epilogue.getIdentifiant());
+        Epilogue  updatedEpilogue = findByIdentifiant(epilogue.getIdentifiant());
         if (updatedEpilogue==null){
             throw new IllegalStateException("epilogue not found");
         }
@@ -44,8 +69,7 @@ public class EpilogueService {
         return updatedEpilogue;
     }
 
-    
-    // TO DO : gestion d'erreurs
+    // TODO : gestion d'erreurs
     
     public  void deleteEpilogue(Integer identifiant) {
         Epilogue deletedEpilogue = epilogueRepository.findByIdentifiant(identifiant);
