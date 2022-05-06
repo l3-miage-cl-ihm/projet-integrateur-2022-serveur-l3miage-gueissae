@@ -2,6 +2,8 @@ package com.example.ControllerEtService.Question;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.example.model.Question;
 import com.example.repository.QuestionRepository;
 
@@ -30,6 +32,7 @@ public class QuestionService {
         return questionRepository.findByIdentifiant(id);
     }
 
+    @Transactional
     public Question updateQuestion(Question question) {
         Question  updatedQuestion = questionRepository.findByIdentifiant(question.getIdentifiant());
         updatedQuestion.setNumero(question.getNumero());
@@ -38,7 +41,6 @@ public class QuestionService {
         updatedQuestion.setLabel(question.getLabel());
         updatedQuestion.setRepondres(question.getRepondres());
         updatedQuestion.setReponses(question.getReponses());
-        questionRepository.save(updatedQuestion);
         return updatedQuestion;
     }
 

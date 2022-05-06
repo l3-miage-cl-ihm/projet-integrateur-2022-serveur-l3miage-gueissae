@@ -2,6 +2,7 @@ package com.example.ControllerEtService.Defis;
 
 import java.util.List;
 
+import com.example.ControllerEtService.Question.QuestionService;
 import com.example.model.Chamis;
 import com.example.model.Defis;
 import com.example.model.Epilogue;
@@ -46,12 +47,13 @@ public class DefisService {
     private final QuestionRepository questionRepository;
     private final IndiceRepository indiceRepository;
     private final InformationRepository informationRepository;
+    private final QuestionService questionService;
 
     @Autowired
     public DefisService(DefisRepository defisRepository, ChamisRepository chamisRepository,
             MotCleRepository motCleRepository,EtapeRepository etapeRepository, PrologueRepository prologueRepository,EpilogueRepository  epilogueRepository
             ,MaterielRepository materielRepository, ReponseRepository reponseRepository, QuestionRepository questionRepository, IndiceRepository indiceRepository,
-            InformationRepository informationRepository) {
+            InformationRepository informationRepository, QuestionService questionService) {
         this.defisRepository = defisRepository;
         this.chamisRepository = chamisRepository;
         this.motCleRepository = motCleRepository;
@@ -63,6 +65,7 @@ public class DefisService {
         this.questionRepository = questionRepository;
         this.indiceRepository = indiceRepository;
         this.informationRepository = informationRepository;
+        this.questionService = questionService;
     }
 
     public List<Defis> getAllDefis() {
@@ -98,8 +101,16 @@ public class DefisService {
         // updatedDefi.setArret(defi.getArret());
         updatedDefi.setPrologue(defi.getPrologue());
         updatedDefi.setEpilogue(defi.getEpilogue());
-        updatedDefi.setEtapes(defi.getEtapes());
-        updatedDefi.getEtapes();
+        // updatedDefi.setEtapes(defi.getEtapes());
+        for(Etape e : defi.getEtapes()){
+            // if(e.getClass().isInstance(Question.class)){
+
+            // }
+            if(e instanceof Question){
+                Question q = (Question)e;
+                questionService.updateQuestion(q);                
+            }
+        }
         updatedDefi.setVisites(defi.getVisites());
 
         return updatedDefi;
@@ -173,7 +184,7 @@ public class DefisService {
         Epilogue epilogue = deleteDefis.getEpilogue();
         System.out.println("Défis 2 Service");
         
-        if(listeVisites==null){
+        if(listeVisites.size() ==0){
             System.out.println("Défis 3 Service");
             deleteEtapeDefis(listeEtapes); 
             deletePrologueDefis(prologue);
@@ -204,9 +215,11 @@ public class DefisService {
     public void deleteEtapeDefis(List<Etape> etapes){
         for (Etape etape : etapes) {
             if(etape instanceof Question){
+                System.out.println("Le if question de deleteEtapeDefis");
                 deleteQuestionDefis((Question)etape);
             }
             if(etape instanceof Information){
+                System.out.println("Le if information de deleteEtapeDefis");
                 deleteInformationDefis((Information)etape);
             }
             etapeRepository.delete(etape);

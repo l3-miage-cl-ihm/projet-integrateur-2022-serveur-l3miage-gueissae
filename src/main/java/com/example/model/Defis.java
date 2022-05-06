@@ -131,7 +131,6 @@ public class Defis{
     @OneToMany
     private List<Visite> visites;
 
-    
     @OneToOne
     private Prologue prologue;
 
@@ -316,14 +315,10 @@ public class Defis{
         this.motsCles = motsCles;
     }    
 
-
     public void addMotCle(MotCle  motcle)  {
         this.motsCles.add(motcle);
     }
     public void  suppressMotCle(MotCle motcle){
         this.motsCles.remove(motcle);
     }
-
-
-
 }
