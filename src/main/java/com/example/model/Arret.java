@@ -61,6 +61,24 @@ public class Arret {
         updatable = true
     )
     private String ligne;
+    @Column(
+        name="lon",
+        insertable = true,
+        nullable = false,
+        unique=false,
+        updatable = true
+    )
+    private String lon;
+
+    @Column(
+        name="lat",
+        insertable = true,
+        nullable = false,
+        unique=false,
+        updatable = true
+    )
+    private String lat;
+
 
     @OneToMany
     private List<Defis> defis;
@@ -72,11 +90,13 @@ public class Arret {
 
     public Arret() {}
 
-    public Arret(String code, String nom, String ligne, List<Defis> defis) {
+    public Arret(String code, String nom, String ligne,String longitude,String latitude, List<Defis> defis) {
         this.code = code;
         this.nom = nom;
         this.ligne = ligne;
         this.defis = defis;
+        // this.longitude= longitude;
+        // this.latitude= latitude;
     }
 
 
@@ -119,5 +139,17 @@ public class Arret {
     public void setDefis(List<Defis> defis) {
         this.defis = defis;
     }
+    public String getLongitude() {
+        return this.lon; 
+    }
+    public String getLatitude() {
+        return this.lat; 
+    }
+    public void setLongitude(String longitude) {
+        this.lon = longitude;
+    }
 
+    public void setLatitude(String latitude) {
+        this.lat = latitude;
+    }
 }

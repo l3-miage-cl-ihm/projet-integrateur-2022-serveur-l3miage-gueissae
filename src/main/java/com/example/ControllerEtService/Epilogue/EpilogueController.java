@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/Epilogue")
+@RequestMapping("/api/epilogue")
 public class EpilogueController {
 
     private final EpilogueService epilogueService;
@@ -80,5 +80,4 @@ public class EpilogueController {
             return new ResponseEntity<Epilogue>(HttpStatus.BAD_REQUEST);
         }
     }
-    
 }

@@ -16,7 +16,7 @@ import org.springframework.http.ResponseEntity;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/motCle")
+@RequestMapping("/api/motcle")
 public class MotCleController {
 
     private final MotCleService motCleService;

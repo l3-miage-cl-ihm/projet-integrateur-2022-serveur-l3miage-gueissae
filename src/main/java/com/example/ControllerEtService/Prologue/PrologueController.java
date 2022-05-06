@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/Prologue")
+@RequestMapping("/api/prologue")
 public class PrologueController {
 
     private final PrologueService prologueService;

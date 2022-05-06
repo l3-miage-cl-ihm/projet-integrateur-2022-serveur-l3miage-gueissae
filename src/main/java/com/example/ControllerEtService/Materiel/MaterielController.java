@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/Materiel")
+@RequestMapping("/api/materiel")
 public class MaterielController {
 
     private final MaterielService materielService;

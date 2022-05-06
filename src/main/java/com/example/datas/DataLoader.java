@@ -18,7 +18,7 @@ public class DataLoader {
     private DefisRepository defisRepository;
     private VisiteRepository visiteRepository;
     private EpilogueRepository epilogueRepository;
-    // private MaterielRepository materielRepository;
+    private MaterielRepository materielRepository;
     private PrologueRepository prologueRepository;
     private MotCleRepository motCleRepository;
     private IndiceRepository indiceRepository;
@@ -39,7 +39,7 @@ public class DataLoader {
         this.defisRepository = defisRepository;
         this.visiteRepository = visiteRepository;
         this.epilogueRepository = epilogueRepository;
-        // this.materielRepository = materielRepository;
+        this.materielRepository = materielRepository;
         this.prologueRepository = prologueRepository;
         this.motCleRepository = motCleRepository;
         this.indiceRepository = indiceRepository;
@@ -129,43 +129,64 @@ public class DataLoader {
         }
     }
 
-    private List<Texte> LoadTextesReponses() {
+    private List<Materiel> LoadTextesReponses() {
 
         Texte texte1 = new Texte(1, "réponse A");
         Texte texte2 = new Texte(2, "réponse B");
         Texte texte3 = new Texte(3, "réponse C");
         Texte texte4 = new Texte(4, "réponse D");
 
-        List<Texte> texteList = new ArrayList<Texte>();
-
+        List<Materiel> texteList = new ArrayList<Materiel>();
         texteList.add(texte1);
         texteList.add(texte2);
         texteList.add(texte3);
         texteList.add(texte4);
 
-        try {
-            for (Texte t : texteList) {
-                texteRepository.save(t);
-            }
-            return texteList;
-        } catch (Exception e) {
-            throw new IllegalStateException("Impossible de save les textes.");
-        }
+        texteRepository.save(texte1);
+        texteRepository.save(texte2);
+        texteRepository.save(texte3);
+        texteRepository.save(texte4);
+
+                List<Texte> textes = texteRepository.findAll();
+                System.out.println("-------TEXTE REPONSE-------" + textes.size());
+                for (Texte t : textes) {
+                    System.out.println(t.getId());
+                    System.out.println(t.getLabel());
+                }
+        
+
+        return texteList;
+
+        // try {
+        //     for (Materiel t : texteList) {
+        //         texteRepository.save((Texte)t);
+        //         // materielRepository.save(t);
+        //         System.out.println(" possible de save les textes ");
+        //     }
+        //     return texteList;
+        // } catch (Exception e) {
+        //     throw new IllegalStateException("Impossible de save les textes.");
+        // }
     }
 
-    private List<Repondre> LoadRepondre() {
-        List<Repondre> repondreList = new ArrayList<Repondre>();
-        return repondreList;
-    }
+    // private List<Repondre> LoadRepondre() {
+    //     List<Repondre> repondreList = new ArrayList<Repondre>();
+    //     return repondreList;
+    // }
 
     private List<Reponse> LoadReponses() {
 
-        List<Texte> textes = new ArrayList<Texte>();
+        LoadTextesReponses();
+        List<Texte> textes = texteRepository.findAll();
         List<Reponse> reponses = new ArrayList<Reponse>();
 
-        textes = LoadTextesReponses();
 
-        Reponse reponse1 = new Reponse(textes.get(0), false);
+        for (Texte t : textes) {
+            System.out.println(t.getLabel());
+        }
+
+        Reponse reponse1 = new Reponse(textes.get(0), false);// bug vient de la car on récupère pas la liste de ceux qui sont save mais juste une liste d'objets
+        // donc quand on essaye de save l'objet réponse avec un materiel qui au final n'est pas dans la base... bah ça plante hein L O G I Q U E.
         reponses.add(reponse1);
         Reponse reponse2 = new Reponse(textes.get(1), false);
         reponses.add(reponse2);
@@ -175,12 +196,16 @@ public class DataLoader {
         reponses.add(reponse4);
 
         try {
+            System.out.println(" essaie de save les réponses 1");
             for (Reponse reponse : reponses) {
+            System.out.println(" essaie de save les réponses 2");
                 reponseRepository.save(reponse);
+            System.out.println(" essaie de save les réponses ");
             }
+            System.out.println(" essaie de save les réponses ");
             return reponses;
         } catch (Exception e) {
-            throw new IllegalStateException("Impossible de save les réponses.");
+            throw new IllegalStateException("Impossible de save les réponses. "+e);
         }
     }
 
@@ -205,12 +230,12 @@ public class DataLoader {
         Mode modeVisite = Mode.PRESENTIEL;
         Statut statutVisite = Statut.ENCOURS;
         List<Visite> visites = new ArrayList<Visite>();
-        List<Repondre> repondre = new ArrayList<Repondre>();
-        List<Indice> indiceVisite = new ArrayList<Indice>();
-        repondre = LoadRepondre();
-        indiceVisite = LoadIndices();
-        Visite visite1 = new Visite("03/05/2022", "13:41", modeVisite, statutVisite, 4, 999, "difficile", repondre,
-                indiceVisite);
+        // List<Repondre> repondre = new ArrayList<Repondre>();
+        // List<Indice> indiceVisite = new ArrayList<Indice>();
+        // repondre = LoadRepondre();
+        // indiceVisite = LoadIndices();
+        Visite visite1 = new Visite("03/05/2022", "13:41", modeVisite, statutVisite, 4, 999, "difficile"/*, repondre,*/
+                /*indiceVisite*/);
         try {
             visiteRepository.save(visite1);
             return visites;

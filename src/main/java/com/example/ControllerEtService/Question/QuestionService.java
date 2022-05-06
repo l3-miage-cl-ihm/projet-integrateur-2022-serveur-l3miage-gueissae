@@ -39,7 +39,7 @@ public class QuestionService {
         updatedQuestion.setDescription(question.getDescription());
         updatedQuestion.setIndices(question.getIndices());
         updatedQuestion.setLabel(question.getLabel());
-        updatedQuestion.setRepondres(question.getRepondres());
+        // updatedQuestion.setRepondres(question.getRepondres());
         updatedQuestion.setReponses(question.getReponses());
         return updatedQuestion;
     }

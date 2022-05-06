@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/Reponse")
+@RequestMapping("/api/reponse")
 public class ReponseController {
     
     private final ReponseService reponseService;

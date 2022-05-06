@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/Video")
+@RequestMapping("/api/video")
 public class VideoController {
     private final VideoService videoService;
 

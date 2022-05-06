@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/Indice")
+@RequestMapping("/api/indice")
 public class IndiceController {
 
     private final IndiceService indiceService;

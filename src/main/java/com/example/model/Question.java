@@ -42,8 +42,8 @@ public class Question extends Etape{
     @OneToMany
     private List<Indice> indices;
 
-    @OneToMany
-    private List<Repondre> repondres;
+    // @OneToMany
+    // private List<Repondre> repondres;
 
 
     // // // // // // // // 
@@ -95,13 +95,13 @@ public class Question extends Etape{
         this.indices = indices;
     }
 
-    public List<Repondre> getRepondres() {
-        return repondres;
-    }
+    // public List<Repondre> getRepondres() {
+    //     return repondres;
+    // }
 
-    public void setRepondres(List<Repondre> repondres) {
-        this.repondres = repondres;
-    }
+    // public void setRepondres(List<Repondre> repondres) {
+    //     this.repondres = repondres;
+    // }
 
     
     
