@@ -22,7 +22,7 @@ public class Question extends Etape{
         name="label",
         insertable = true,
         nullable = false,
-        unique=true,
+        unique=false,
         updatable = false
     )
     private String label;

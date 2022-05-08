@@ -52,6 +52,7 @@ public class DefisController {
             System.out.println(d.getIdentifiant());
             return new ResponseEntity<Defis>(d, HttpStatus.OK);
         } catch (IllegalArgumentException e) {
+            System.out.println(e);
             return new ResponseEntity<Defis>(HttpStatus.BAD_REQUEST );
         }
     }

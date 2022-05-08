@@ -2,6 +2,7 @@ package com.example.model;
 
 import com.example.enumeration.Mode;
 import com.example.enumeration.Type;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
 
@@ -143,6 +144,10 @@ public class Defis{
     @ManyToMany
     private List<MotCle> motsCles;
 
+
+    @JsonIgnoreProperties("defis")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Arret arret;
 
     // // // // // // // // 
     //   CONSTRUCTEURS   //
@@ -320,5 +325,14 @@ public class Defis{
     }
     public void  suppressMotCle(MotCle motcle){
         this.motsCles.remove(motcle);
+    }
+
+
+    public Arret getArret() {
+        return arret;
+    }
+
+    public void setArret(Arret arret) {
+        this.arret = arret;
     }
 }

@@ -3,6 +3,7 @@ package com.example.ControllerEtService.Defis;
 import java.util.List;
 
 import com.example.ControllerEtService.Question.QuestionService;
+import com.example.model.Arret;
 import com.example.model.Chamis;
 import com.example.model.Defis;
 import com.example.model.Epilogue;
@@ -15,6 +16,7 @@ import com.example.model.Prologue;
 import com.example.model.Question;
 import com.example.model.Reponse;
 import com.example.model.Visite;
+import com.example.repository.ArretRepository;
 import com.example.repository.ChamisRepository;
 import com.example.repository.DefisRepository;
 import com.example.repository.EpilogueRepository;
@@ -48,12 +50,13 @@ public class DefisService {
     private final IndiceRepository indiceRepository;
     private final InformationRepository informationRepository;
     private final QuestionService questionService;
+    private final ArretRepository arretRepository;
 
     @Autowired
     public DefisService(DefisRepository defisRepository, ChamisRepository chamisRepository,
             MotCleRepository motCleRepository,EtapeRepository etapeRepository, PrologueRepository prologueRepository,EpilogueRepository  epilogueRepository
             ,MaterielRepository materielRepository, ReponseRepository reponseRepository, QuestionRepository questionRepository, IndiceRepository indiceRepository,
-            InformationRepository informationRepository, QuestionService questionService) {
+            InformationRepository informationRepository, QuestionService questionService, ArretRepository arretRepository) {
         this.defisRepository = defisRepository;
         this.chamisRepository = chamisRepository;
         this.motCleRepository = motCleRepository;
@@ -66,6 +69,7 @@ public class DefisService {
         this.indiceRepository = indiceRepository;
         this.informationRepository = informationRepository;
         this.questionService = questionService;
+        this.arretRepository = arretRepository;
     }
 
     public List<Defis> getAllDefis() {
@@ -101,18 +105,42 @@ public class DefisService {
         // updatedDefi.setArret(defi.getArret());
         updatedDefi.setPrologue(defi.getPrologue());
         updatedDefi.setEpilogue(defi.getEpilogue());
-        // updatedDefi.setEtapes(defi.getEtapes());
+        updatedDefi.setEtapes(defi.getEtapes());
         for(Etape e : defi.getEtapes()){
-            // if(e.getClass().isInstance(Question.class)){
-
-            // }
+   
             if(e instanceof Question){
                 Question q = (Question)e;
                 questionService.updateQuestion(q);                
             }
         }
         updatedDefi.setVisites(defi.getVisites());
+     
+        System.out.println("coucocu   1");
+        // System.out.println("coucocu   id : " +  defi.getArret().getIdentifiant());
+        // ne rentre pas dans coucouc 2 quand il le faut 
+        if(updatedDefi.getArret() != null && defi.getArret() != null){
+            System.out.println("coucocu     2");
 
+            if(updatedDefi.getArret().getIdentifiant() != defi.getArret().getIdentifiant()){
+                System.out.println("les deux arret sont différent donc update");
+               Arret arret = arretRepository.findByIdentifiant(defi.getArret().getIdentifiant());
+               Arret oldArret = updatedDefi.getArret();
+               // lors du changement d'arret la liaison entre defis et arret dans la trable les_arrets_defis n'est pas supprimé
+               oldArret.DeleteDefis(updatedDefi);
+               arret.addDefis(updatedDefi);
+               updatedDefi.setArret(arret);
+
+         
+            }
+
+        }else if(defi.getArret() != null){
+            System.out.println("coucocu 3");
+
+            Arret arret = arretRepository.findByIdentifiant(defi.getArret().getIdentifiant());
+            arret.addDefis(updatedDefi);
+            updatedDefi.setArret(arret);
+            // updatedDefi.setArret(arret);
+        }
         return updatedDefi;
     }
 /**
