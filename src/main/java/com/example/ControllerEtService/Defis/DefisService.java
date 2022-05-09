@@ -124,9 +124,10 @@ public class DefisService {
             if(updatedDefi.getArret().getIdentifiant() != defi.getArret().getIdentifiant()){
                 System.out.println("les deux arret sont différent donc update");
                Arret arret = arretRepository.findByIdentifiant(defi.getArret().getIdentifiant());
-               Arret oldArret = updatedDefi.getArret();
+               //Arret oldArret = updatedDefi.getArret();
                // lors du changement d'arret la liaison entre defis et arret dans la trable les_arrets_defis n'est pas supprimé
-               oldArret.DeleteDefis(updatedDefi);
+               // oldArret.DeleteDefis(updatedDefi);
+               arretRepository.deletedefisarrets(updatedDefi.getArret().getIdentifiant(), updatedDefi.getIdentifiant());
                arret.addDefis(updatedDefi);
                updatedDefi.setArret(arret);
 
