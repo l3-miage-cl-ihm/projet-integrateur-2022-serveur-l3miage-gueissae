@@ -2,6 +2,8 @@ package com.example.ControllerEtService.Chamis;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import com.example.model.Chamis;
 import com.example.repository.ChamisRepository;
 
@@ -33,6 +35,8 @@ public class ChamisService {
     public Chamis findByLogin(String login) {
         return chamisRepository.findByLogin(login);
     }
+
+    @Transactional
     public Chamis  updateChamis(Chamis  chamis){
         String email = chamis.getEmail();
         Chamis updatedChamis = chamisRepository.findByEmail(email);
