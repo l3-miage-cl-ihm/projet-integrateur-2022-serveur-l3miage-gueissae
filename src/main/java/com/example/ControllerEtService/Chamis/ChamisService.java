@@ -56,7 +56,7 @@ public class ChamisService {
         updatedChamis.setVille(chamis.getVille());
         updatedChamis.setVisites(chamis.getVisites());
         for (Visite visite : visiteliste) {
-            visiteService.update(visite);
+            visiteService.updateVisite(visite);
             
         }
         return updatedChamis;

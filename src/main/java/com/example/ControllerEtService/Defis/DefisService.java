@@ -2,6 +2,7 @@ package com.example.ControllerEtService.Defis;
 
 import java.util.List;
 
+import com.example.ControllerEtService.Information.InformationService;
 import com.example.ControllerEtService.Question.QuestionService;
 import com.example.model.Arret;
 import com.example.model.Chamis;
@@ -51,12 +52,13 @@ public class DefisService {
     private final InformationRepository informationRepository;
     private final QuestionService questionService;
     private final ArretRepository arretRepository;
+    private final  InformationService  informationService;
 
     @Autowired
     public DefisService(DefisRepository defisRepository, ChamisRepository chamisRepository,
             MotCleRepository motCleRepository,EtapeRepository etapeRepository, PrologueRepository prologueRepository,EpilogueRepository  epilogueRepository
             ,MaterielRepository materielRepository, ReponseRepository reponseRepository, QuestionRepository questionRepository, IndiceRepository indiceRepository,
-            InformationRepository informationRepository, QuestionService questionService, ArretRepository arretRepository) {
+            InformationRepository informationRepository, QuestionService questionService, ArretRepository arretRepository,   InformationService informationService) {
         this.defisRepository = defisRepository;
         this.chamisRepository = chamisRepository;
         this.motCleRepository = motCleRepository;
@@ -70,6 +72,7 @@ public class DefisService {
         this.informationRepository = informationRepository;
         this.questionService = questionService;
         this.arretRepository = arretRepository;
+        this.informationService= informationService;
     }
 
     public List<Defis> getAllDefis() {
@@ -111,6 +114,10 @@ public class DefisService {
             if(e instanceof Question){
                 Question q = (Question)e;
                 questionService.updateQuestion(q);                
+            }
+            if(e instanceof Information){
+                Information i = (Information)e;
+                informationService.updateInformation(i);
             }
         }
         updatedDefi.setVisites(defi.getVisites());

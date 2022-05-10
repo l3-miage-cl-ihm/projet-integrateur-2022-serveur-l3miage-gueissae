@@ -31,7 +31,7 @@ public class VisiteService {
         return visiteRepository.findByIdentifiant(id);
     }
     @Transactional
-    public void update(Visite visite) {
+    public void updateVisite(Visite visite) {
         Visite updatedVisite = visiteRepository.findByIdentifiant(visite.getIdentifiant());
         if(updatedVisite != null){
             throw new IllegalStateException("Visite not found");

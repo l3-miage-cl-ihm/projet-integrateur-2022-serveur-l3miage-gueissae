@@ -31,7 +31,7 @@ public class InformationService {
     public Information findByIdentifiant(Integer id){
         return informationRepository.findByIdentifiant(id);
     }
-    public void update(Information information){
+    public void updateInformation(Information information){
         Information updatedInformation = informationRepository.findByIdentifiant(information.getIdentifiant());
         if (updatedInformation == null){
             throw new IllegalStateException("Information not found");
