@@ -1,7 +1,9 @@
 package com.example.model;
 
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.transaction.Transactional;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table (
@@ -21,7 +26,7 @@ import javax.persistence.UniqueConstraint;
 public class Arret {
 
     // // // // // // // //
-    //      COLONNE      //
+    //      COLONNES     //
     // // // // // // // //
     
     @Id
@@ -61,22 +66,45 @@ public class Arret {
         updatable = true
     )
     private String ligne;
+    @Column(
+        name="lon",
+        insertable = true,
+        nullable = false,
+        unique=false,
+        updatable = true
+    )
+    private String lon;
 
-    @OneToMany
-    private List<Defis> defis;
+    @Column(
+        name="lat",
+        insertable = true,
+        nullable = false,
+        unique=false,
+        updatable = true
+    )
+    private String lat;
+
+    @JsonIgnoreProperties("arret")
+    @OneToMany(
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    private Set<Defis> defis;
 
 
     // // // // // // // // 
-    //    CONSTRUCTEUR   //
+    //   CONSTRUCTEURS   //
     // // // // // // // //
 
     public Arret() {}
 
-    public Arret(String code, String nom, String ligne, List<Defis> defis) {
+    public Arret(String code, String nom, String ligne,String longitude,String latitude, Set<Defis> defis) {
         this.code = code;
         this.nom = nom;
         this.ligne = ligne;
         this.defis = defis;
+        // this.longitude= longitude;
+        // this.latitude= latitude;
     }
 
 
@@ -85,6 +113,9 @@ public class Arret {
     // // // // // // // //
 
     public int getId() {
+        return identifiant;
+    }
+    public int getIdentifiant() {
         return identifiant;
     }
 
@@ -112,12 +143,41 @@ public class Arret {
         this.ligne = ligne;
     }
 
-    public List<Defis> getDefis() {
+    public Set<Defis> getDefis() {
         return defis;
     }
 
-    public void setDefis(List<Defis> defis) {
+    public void setDefis(Set<Defis> defis) {
         this.defis = defis;
     }
+    public String getLongitude() {
+        return this.lon; 
+    }
+    public String getLatitude() {
+        return this.lat; 
+    }
+    public void setLongitude(String longitude) {
+        this.lon = longitude;
+    }
 
+    public void setLatitude(String latitude) {
+        this.lat = latitude;
+    }
+
+    public void addDefis(Defis d){
+        // d.setArret(this);
+        this.defis.add(d);
+    
+    }
+
+    public void DeleteDefis(Defis d) {
+        System.out.println("delte" + d.getIdentifiant() );
+        defis.remove(d);
+        
+        
+        System.out.println("les defis :");
+        for (Defis defis2 : defis) {
+            System.out.println("voici les defi" + defis2.getIdentifiant());
+        }
+    }
 }

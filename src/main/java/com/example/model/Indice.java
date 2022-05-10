@@ -78,6 +78,10 @@ public class Indice{
     //     GET & SET     //
     // // // // // // // //
 
+    public Integer getIdentifiant() {
+        return identifiant;
+    }
+
     public String getLabel() {
         return label;
     }

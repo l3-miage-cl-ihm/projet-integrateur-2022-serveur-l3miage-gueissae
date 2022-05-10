@@ -2,19 +2,17 @@ package com.example.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(
     name = "LesTextes"
 )
-@PrimaryKeyJoinColumn(name = "texteIdentifiant")
 public class Texte extends Materiel {
 
 
     // // // // // // // //
-    //      COLONNE      //
+    //      COLONNES     //
     // // // // // // // //
 
     @Column(
@@ -28,7 +26,7 @@ public class Texte extends Materiel {
 
 
     // // // // // // // // 
-    //    CONSTRUCTEUR   //
+    //   CONSTRUCTEURS   //
     // // // // // // // //
 
     public Texte() {}
