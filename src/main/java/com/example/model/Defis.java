@@ -2,6 +2,7 @@ package com.example.model;
 
 import com.example.enumeration.Mode;
 import com.example.enumeration.Type;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
 
@@ -119,10 +120,18 @@ public class Defis{
     )
     private String dateDeModification;
 
+    @Column(
+        name= "actif",
+        insertable = true,
+        nullable = false,
+        unique = false,
+        updatable = true
+    )
+    private Boolean actif;
+
     @OneToMany
     private List<Visite> visites;
 
-    
     @OneToOne
     private Prologue prologue;
 
@@ -136,8 +145,12 @@ public class Defis{
     private List<MotCle> motsCles;
 
 
+    @JsonIgnoreProperties("defis")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Arret arret;
+
     // // // // // // // // 
-    //    CONSTRUCTEUR   //
+    //   CONSTRUCTEURS   //
     // // // // // // // //
 
     public Defis(){
@@ -146,7 +159,7 @@ public class Defis{
 
     public Defis(String titre, String description, Type type, Mode mode, int point, int duree, String commentaire,
             String dateDeCreation, String dateDeModification, List<Visite> visites, Prologue prologue,
-            Epilogue epilogue, List<Etape> etapes, List<MotCle> motsCles) {
+            Epilogue epilogue, List<Etape> etapes, List<MotCle> motsCles, Boolean actif) {
         this.setIdentifiant();
         this.titre = titre;
         this.description = description;
@@ -162,6 +175,7 @@ public class Defis{
         this.epilogue = epilogue;
         this.etapes = etapes;
         this.motsCles = motsCles;
+        this.actif = actif;
     }
 
 
@@ -250,6 +264,14 @@ public class Defis{
         this.dateDeModification = dateDeModification;
     }
 
+    public Boolean getActif(){
+        return actif;
+    }
+
+    public void setActif() {
+        this.actif = !this.actif;
+    }
+
     public List<Visite> getVisites() {
         return visites;
     }
@@ -298,7 +320,6 @@ public class Defis{
         this.motsCles = motsCles;
     }    
 
-
     public void addMotCle(MotCle  motcle)  {
         this.motsCles.add(motcle);
     }
@@ -306,4 +327,12 @@ public class Defis{
         this.motsCles.remove(motcle);
     }
 
+
+    public Arret getArret() {
+        return arret;
+    }
+
+    public void setArret(Arret arret) {
+        this.arret = arret;
+    }
 }

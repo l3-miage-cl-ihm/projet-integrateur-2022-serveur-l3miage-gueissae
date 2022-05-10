@@ -2,6 +2,7 @@ package com.example.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,7 +20,7 @@ import javax.persistence.Table;
 public class Chamis {
 
     // // // // // // // //
-    //      COLONNE      //
+    //      COLONNES     //
     // // // // // // // //
 
     @Id
@@ -59,6 +60,15 @@ public class Chamis {
     )
     private String description;
 
+    @Column(
+        name="active",
+        insertable = true,
+        nullable = true,
+        unique=false,
+        updatable = true
+    )
+    private Boolean active;
+
     @ManyToOne
     private Ville ville;
 
@@ -68,9 +78,8 @@ public class Chamis {
     @OneToMany
     private List<Visite> visites;
 
-
     // // // // // // // // 
-    //    CONSTRUCTEUR   //
+    //   CONSTRUCTEURS   //
     // // // // // // // //
 
     public Chamis() {}
@@ -82,10 +91,11 @@ public class Chamis {
         this.description = chami.getDescription();
         this.ville = chami.getVille();
         this.defis = chami.getDefis();
+        this.active = chami.getActive();
     }
 
     public Chamis(String email, String login, Integer age, String description, Ville ville, List<Defis> defis,
-            List<Visite> visites) {
+            List<Visite> visites, Boolean active) {
         this.email = email;
         this.login = login;
         this.age = age;
@@ -93,6 +103,7 @@ public class Chamis {
         this.ville = ville;
         this.defis = defis;
         this.visites = visites;
+        this.active = active;
     }
 
 
@@ -132,6 +143,14 @@ public class Chamis {
         this.description = description;
     }
 
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+    
     public Ville getVille() {
         return ville;
     }

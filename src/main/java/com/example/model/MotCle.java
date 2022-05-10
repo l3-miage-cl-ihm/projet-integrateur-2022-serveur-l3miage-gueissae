@@ -11,7 +11,7 @@ public class MotCle {
 
 
     // // // // // // // //
-    //      COLONNE      //
+    //      COLONNES     //
     // // // // // // // //
 
     @Id 
@@ -36,7 +36,7 @@ public class MotCle {
 
 
     // // // // // // // // 
-    //    CONSTRUCTEUR   //
+    //   CONSTRUCTEURS   //
     // // // // // // // //
 
     public MotCle() {}

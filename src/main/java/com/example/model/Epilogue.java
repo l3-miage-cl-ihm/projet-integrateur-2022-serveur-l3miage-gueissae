@@ -18,7 +18,7 @@ import javax.persistence.Column;
 public class Epilogue {
 
     // // // // // // // //
-    //      COLONNE      //
+    //      COLONNES     //
     // // // // // // // //
 
     @Id

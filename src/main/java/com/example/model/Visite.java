@@ -1,14 +1,14 @@
 package com.example.model;
 
-import java.util.List;
+// import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+// import javax.persistence.ManyToMany;
+// import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.example.enumeration.Mode;
@@ -22,7 +22,7 @@ import com.example.enumeration.Statut;
 public class Visite {
 
     // // // // // // // //
-    //      COLONNE      //
+    //      COLONNES     //
     // // // // // // // //
 
     @Id
@@ -99,21 +99,21 @@ public class Visite {
     )
     private String commentaire;
 
-    @OneToMany
-    private List<Repondre> repondres;
+    // @OneToMany
+    // private List<Repondre> repondres;
     
-    @ManyToMany
-    private List<Indice> indices;
+    // @ManyToMany
+    // private List<Indice> indices;
 
     
     // // // // // // // // 
-    //    CONSTRUCTEUR   //
+    //   CONSTRUCTEURS   //
     // // // // // // // //
     
     public Visite(){}
 
-    public Visite(String date, String heure, Mode mode, Statut statut, int score, int temps, String commentaire,
-            List<Repondre> repondres, List<Indice> indices) {
+    public Visite(String date, String heure, Mode mode, Statut statut, int score, int temps, String commentaire/*,
+             List<Repondre> repondres, List<Indice> indices*/) {
         this.date = date;
         this.heure = heure;
         this.mode = mode;
@@ -121,8 +121,8 @@ public class Visite {
         this.score = score;
         this.temps = temps;
         this.commentaire = commentaire;
-        this.repondres = repondres;
-        this.indices = indices;
+        // this.repondres = repondres;
+        // this.indices = indices;
     }
 
 
@@ -190,21 +190,21 @@ public class Visite {
         this.commentaire = commentaire;
     }
 
-    public List<Repondre> getRepondres() {
-        return repondres;
-    }
+    // public List<Repondre> getRepondres() {
+    //     return repondres;
+    // }
 
-    public void setRepondres(List<Repondre> repondres) {
-        this.repondres = repondres;
-    }
+    // public void setRepondres(List<Repondre> repondres) {
+    //     this.repondres = repondres;
+    // }
 
-    public List<Indice> getIndices() {
-        return indices;
-    }
+    // public List<Indice> getIndices() {
+    //     return indices;
+    // }
 
-    public void setIndices(List<Indice> indices) {
-        this.indices = indices;
-    }
+    // public void setIndices(List<Indice> indices) {
+    //     this.indices = indices;
+    // }
 
     
 

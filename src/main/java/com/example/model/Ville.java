@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Ville {
 
     // // // // // // // //
-    //      COLONNE      //
+    //      COLONNES     //
     // // // // // // // //
     
     @Id
