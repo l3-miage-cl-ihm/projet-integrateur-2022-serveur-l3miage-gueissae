@@ -33,9 +33,7 @@ public class VisiteService {
     @Transactional
     public void updateVisite(Visite visite) {
         Visite updatedVisite = visiteRepository.findByIdentifiant(visite.getIdentifiant());
-        if(updatedVisite != null){
-            throw new IllegalStateException("Visite not found");
-        }
+
         
         updatedVisite.setCommentaire(visite.getCommentaire());
         updatedVisite.setDate(visite.getDate());

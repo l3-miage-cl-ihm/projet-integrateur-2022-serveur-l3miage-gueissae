@@ -55,10 +55,10 @@ public class ChamisService {
         updatedChamis.setLogin(chamis.getLogin());
         updatedChamis.setVille(chamis.getVille());
         updatedChamis.setVisites(chamis.getVisites());
-        for (Visite visite : visiteliste) {
-            visiteService.updateVisite(visite);
+        //for (Visite visite : visiteliste) {
+        //    visiteService.updateVisite(visite);
             
-        }
+        //}
         return updatedChamis;
     }
 
