@@ -2,6 +2,8 @@ package com.example.ControllerEtService.Information;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder.In;
+
 import com.example.model.Information;
 import com.example.repository.InformationRepository;
 
@@ -28,5 +30,14 @@ public class InformationService {
 
     public Information findByIdentifiant(Integer id){
         return informationRepository.findByIdentifiant(id);
+    }
+    public void update(Information information){
+        Information updatedInformation = informationRepository.findByIdentifiant(information.getIdentifiant());
+        if (updatedInformation == null){
+            throw new IllegalStateException("Information not found");
+        }
+        updatedInformation.setIndices(information.getIndices());
+        updatedInformation.setNumero(information.getNumero());
+        updatedInformation.setTexte(information.getTexte());
     }
 }

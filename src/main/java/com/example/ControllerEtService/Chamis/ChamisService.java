@@ -4,8 +4,11 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import com.example.ControllerEtService.Visite.VisiteService;
 import com.example.model.Chamis;
+import com.example.model.Visite;
 import com.example.repository.ChamisRepository;
+import com.example.repository.VisiteRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +17,12 @@ import org.springframework.stereotype.Service;
 public class ChamisService {
     
     private final ChamisRepository chamisRepository;
+    private final VisiteService visiteService;
 
     @Autowired
-    public ChamisService(ChamisRepository chamisRepository) {
+    public ChamisService(ChamisRepository chamisRepository,VisiteService visiteService) {
         this.chamisRepository = chamisRepository;
+        this.visiteService = visiteService;
     }
 
     public List<Chamis> getAllChamis() {
@@ -40,6 +45,7 @@ public class ChamisService {
     public Chamis  updateChamis(Chamis  chamis){
         String email = chamis.getEmail();
         Chamis updatedChamis = chamisRepository.findByEmail(email);
+        List<Visite> visiteliste = chamis.getVisites();
         if(updatedChamis==null){
             throw new IllegalStateException("Chamis with email:"+email+" doesn't exists");
         }
@@ -49,6 +55,10 @@ public class ChamisService {
         updatedChamis.setLogin(chamis.getLogin());
         updatedChamis.setVille(chamis.getVille());
         updatedChamis.setVisites(chamis.getVisites());
+        for (Visite visite : visiteliste) {
+            visiteService.update(visite);
+            
+        }
         return updatedChamis;
     }
 

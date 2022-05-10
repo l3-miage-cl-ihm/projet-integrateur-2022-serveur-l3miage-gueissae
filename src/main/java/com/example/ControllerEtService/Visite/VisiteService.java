@@ -7,6 +7,7 @@ import com.example.repository.VisiteRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class VisiteService {
@@ -28,5 +29,20 @@ public class VisiteService {
 
     public Visite findByIdentifiant(Integer id){
         return visiteRepository.findByIdentifiant(id);
+    }
+    @Transactional
+    public void update(Visite visite) {
+        Visite updatedVisite = visiteRepository.findByIdentifiant(visite.getIdentifiant());
+        if(updatedVisite != null){
+            throw new IllegalStateException("Visite not found");
+        }
+        
+        updatedVisite.setCommentaire(visite.getCommentaire());
+        updatedVisite.setDate(visite.getDate());
+        updatedVisite.setHeure(visite.getHeure());
+        updatedVisite.setMode(visite.getMode());
+        updatedVisite.setScore(visite.getScore());
+        updatedVisite.setStatut(visite.getStatut());
+        updatedVisite.setTemps(visite.getTemps());
     }
 }
