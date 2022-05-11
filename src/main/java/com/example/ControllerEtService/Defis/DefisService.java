@@ -96,7 +96,6 @@ public class DefisService {
         updatedDefi.setDateDeCreation(defi.getDateDeCreation());
         updatedDefi.setDateDeModification(defi.getDateDeModification());
         updatedDefi.setMotsCles(defi.getMotsCles());
-        // updatedDefi.setArret(defi.getArret());
         updatedDefi.setPrologue(defi.getPrologue());
         updatedDefi.setEpilogue(defi.getEpilogue());
         updatedDefi.setEtapes(defi.getEtapes());
@@ -123,23 +122,16 @@ public class DefisService {
             if(updatedDefi.getArret().getIdentifiant() != defi.getArret().getIdentifiant()){
                 System.out.println("les deux arret sont différent donc update");
                Arret arret = arretRepository.findByIdentifiant(defi.getArret().getIdentifiant());
-               //Arret oldArret = updatedDefi.getArret();
-               // lors du changement d'arret la liaison entre defis et arret dans la trable les_arrets_defis n'est pas supprimé
-               // oldArret.DeleteDefis(updatedDefi);
                arretRepository.deletedefisarrets(updatedDefi.getArret().getIdentifiant(), updatedDefi.getIdentifiant());
                arret.addDefis(updatedDefi);
                updatedDefi.setArret(arret);
-
-         
             }
-
-        }else if(defi.getArret() != null){
+        } else if(defi.getArret() != null){
             System.out.println("coucocu 3");
 
             Arret arret = arretRepository.findByIdentifiant(defi.getArret().getIdentifiant());
             arret.addDefis(updatedDefi);
             updatedDefi.setArret(arret);
-            // updatedDefi.setArret(arret);
         }
         return updatedDefi;
     }

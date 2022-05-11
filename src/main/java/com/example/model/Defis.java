@@ -179,7 +179,6 @@ public class Defis{
         this.actif = actif;
     }
 
-
     // // // // // // // // 
     //     GET & SET     //
     // // // // // // // //
@@ -324,10 +323,10 @@ public class Defis{
     public void addMotCle(MotCle  motcle)  {
         this.motsCles.add(motcle);
     }
+
     public void  suppressMotCle(MotCle motcle){
         this.motsCles.remove(motcle);
     }
-
 
     public Arret getArret() {
         return arret;
