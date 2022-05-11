@@ -8,7 +8,7 @@ import com.example.ControllerEtService.Visite.VisiteService;
 import com.example.model.Chamis;
 import com.example.model.Visite;
 import com.example.repository.ChamisRepository;
-import com.example.repository.VisiteRepository;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,10 +55,9 @@ public class ChamisService {
         updatedChamis.setLogin(chamis.getLogin());
         updatedChamis.setVille(chamis.getVille());
         updatedChamis.setVisites(chamis.getVisites());
-        //for (Visite visite : visiteliste) {
-        //    visiteService.updateVisite(visite);
-            
-        //}
+        for (Visite visite : visiteliste) {
+            visiteService.updateVisite(visite);
+        }
         return updatedChamis;
     }
 

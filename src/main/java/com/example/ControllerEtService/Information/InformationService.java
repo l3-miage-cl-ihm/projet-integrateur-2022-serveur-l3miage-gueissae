@@ -2,7 +2,6 @@ package com.example.ControllerEtService.Information;
 
 import java.util.List;
 
-import javax.persistence.criteria.CriteriaBuilder.In;
 
 import com.example.model.Information;
 import com.example.repository.InformationRepository;

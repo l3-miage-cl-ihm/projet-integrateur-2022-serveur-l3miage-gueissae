@@ -139,6 +139,7 @@ public class Defis{
     private Epilogue epilogue;
 
     @OneToMany
+    @OrderBy("numero")
     private List<Etape> etapes;
 
     @ManyToMany
