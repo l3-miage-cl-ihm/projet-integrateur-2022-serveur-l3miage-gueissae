@@ -129,16 +129,10 @@ INSERT INTO les_informations (identifiant,numero,texte) VALUES (6,6,'Je suis ou 
 
 INSERT INTO les_questions (identifiant,numero,description,label) VALUES (1,7,'Quel est le peuple ayant vécu à Grenoble au IIIème siècle ?','Question 1: Romains');
 
-INSERT INTO les_materiels (identifiant,numero) VALUES (1,0);
-INSERT INTO les_materiels (identifiant,numero) VALUES (2,0);
-INSERT INTO les_materiels (identifiant,numero) VALUES (3,0);
-INSERT INTO les_materiels (identifiant,numero) VALUES (4,0);
-
-
 insert into les_textes (identifiant,numero,label) VALUES (1,0,'Les vikings');
 insert into les_textes (identifiant,numero,label) VALUES (2,0,'Les kardashians');
-insert into les_textes (identifiant,numero,label) VALUES (4,0,'Les incas');
 insert into les_textes (identifiant,numero,label) VALUES (3,0,'Les romains');
+insert into les_textes (identifiant,numero,label) VALUES (4,0,'Les incas');
 
 INSERT INTO les_reponses(identifiant,bonne_reponse,materiel_identifiant) VALUES (1,false,1);
 INSERT INTO les_reponses(identifiant,bonne_reponse,materiel_identifiant) VALUES (2,false,2);
@@ -150,7 +144,6 @@ INSERT INTO les_questions_reponses (les_questions_identifiant,reponses_identifia
 INSERT INTO les_questions_reponses (les_questions_identifiant,reponses_identifiant)  VALUES (1,3);
 INSERT INTO les_questions_reponses (les_questions_identifiant,reponses_identifiant)  VALUES (1,4);
 
-
 INSERT INTO les_informations (identifiant,numero,texte) VALUES (7,8,'Pourquoi vous me parlez de romains ?');
 INSERT INTO les_informations (identifiant,numero,texte) VALUES (8,9,'Attendez là vous pensez que j’ai fait un retour dans le temps ?');
 INSERT INTO les_informations (identifiant,numero,texte) VALUES (9,10,'Oh la la c’est quoi ça encore ? Je vais encore être en retard pour le dîner ça veut dire …');
@@ -159,11 +152,6 @@ INSERT INTO les_informations (identifiant,numero,texte) VALUES (11,12,'Il parle 
 INSERT INTO les_informations (identifiant,numero,texte) VALUES (12,13,'Essayez de trouver son nom ça devrait m’être utile !');
 
 INSERT INTO les_questions (identifiant,numero,description,label) VALUES (2,14,'Quel est le nom du sénateur ayant reconnu le statut de ville pour Grenoble ?','Question 2: Sénateur');
-
-INSERT INTO les_materiels (identifiant,numero) VALUES (5,0);
-INSERT INTO les_materiels (identifiant,numero) VALUES (6,0);
-INSERT INTO les_materiels (identifiant,numero) VALUES (7,0);
-INSERT INTO les_materiels (identifiant,numero) VALUES (8,0);
 
 insert into les_textes (identifiant,numero,label) VALUES (5,0,'Charlemagne');
 insert into les_textes (identifiant,numero,label) VALUES (6,0,'Napoleon');
@@ -187,11 +175,6 @@ INSERT INTO les_informations (identifiant,numero,texte) VALUES (16,18,'il faut q
 
 INSERT INTO les_questions (identifiant,numero,description,label) VALUES (3,19,'Quel est le nom du bar a devant l ancien rempart?','Question 3: Rempart');
 
-INSERT INTO les_materiels (identifiant,numero) VALUES (9,0);
-INSERT INTO les_materiels (identifiant,numero) VALUES (10,0);
-INSERT INTO les_materiels (identifiant,numero) VALUES (11,0);
-INSERT INTO les_materiels (identifiant,numero) VALUES (12,0);
-
 insert into les_textes (identifiant,numero,label) VALUES (9,0,'Le tonneau de diogene');
 insert into les_textes (identifiant,numero,label) VALUES (10,0,'Le brugs');
 insert into les_textes (identifiant,numero,label) VALUES (11,0,'Le SOS');
@@ -212,18 +195,14 @@ INSERT INTO les_informations (identifiant,numero,texte) VALUES (18,21,'Ma memoir
 INSERT INTO les_informations (identifiant,numero,texte) VALUES (19,22,'Ce qui me rappelle que avant d arriver ici je me trouvais pres d une tour.');
 INSERT INTO les_informations (identifiant,numero,texte) VALUES (20,23,'Tu pourrais te renseigner steu plait ?');
 
-
-
 INSERT INTO les_questions (identifiant,numero,description,label) VALUES (4,24,'Peut on faire le tour du vestige?','Question 4: Tour1');
 
-INSERT INTO les_materiels (identifiant,numero) VALUES (13,0);
-INSERT INTO les_materiels (identifiant,numero) VALUES (14,0);
-
+-- INSERT INTO les_materiels (identifiant,numero) VALUES (13,0);
+-- INSERT INTO les_materiels (identifiant,numero) VALUES (14,0);
 
 insert into les_textes (identifiant,numero,label) VALUES (13,0,'Oui');
 insert into les_textes (identifiant,numero,label) VALUES (14,0,'Non');
 																 
-
 INSERT INTO les_reponses(identifiant,bonne_reponse,materiel_identifiant) VALUES (13,true,13);
 INSERT INTO les_reponses(identifiant,bonne_reponse,materiel_identifiant) VALUES (14,false,14);
 																				 
@@ -234,8 +213,7 @@ INSERT INTO les_questions_reponses (les_questions_identifiant,reponses_identifia
 INSERT INTO les_informations (identifiant,numero,texte) VALUES (21,25,'Non, ce n’est pas la que j’étais, c’était plus vers le jardin de ville, il me semble que je sortais du bar à côté de l’église.');
 INSERT INTO les_informations (identifiant,numero,texte) VALUES (22,26,' Va voir sur le mur a l etree du jardin de ville cote eglise y a une phrase bizarre que j ai lu');
 
-INSERT INTO les_defis  (identifiant,actif,commentaire,date_de_creation,date_de_modification,description,duree,mode,point,titre,type,arret_identifiant)
-VALUES (1,true,'Le premier defi !','10/05/2022','11/05/2022','Aidez  thierry à s en sortir au III eme siecle !',30,2,5,'Retour dans le temps ! Grenoble et les romains !',1,42);
+INSERT INTO les_defis (identifiant,actif,commentaire,date_de_creation,date_de_modification,description,duree,mode,point,titre,type,arret_identifiant) VALUES (1,true,'Le premier defi !','10/05/2022','11/05/2022','Aidez  thierry à s en sortir au III eme siecle !',30,1,5,'Retour dans le temps ! Grenoble et les romains !',0,42);
 
 INSERT INTO les_arrets_defis (arret_identifiant,defis_identifiant) VALUES  (42,1);
 
