@@ -140,10 +140,12 @@ public class Defis{
     @OneToMany
     private List<Visite> visites;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @OrderBy("numero")
     private List<Materiel> prologue;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @OrderBy("numero")
     private List<Materiel> epilogue;
 
     @OneToMany
