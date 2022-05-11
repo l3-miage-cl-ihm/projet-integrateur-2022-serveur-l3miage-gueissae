@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity()
 @Table(
-    name = "LesInforamtions"
+    name = "LesInformations"
 )
 public class Information extends Etape {
 

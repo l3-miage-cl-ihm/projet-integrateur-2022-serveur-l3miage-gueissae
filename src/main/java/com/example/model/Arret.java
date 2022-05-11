@@ -1,6 +1,5 @@
 package com.example.model;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.transaction.Transactional;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
