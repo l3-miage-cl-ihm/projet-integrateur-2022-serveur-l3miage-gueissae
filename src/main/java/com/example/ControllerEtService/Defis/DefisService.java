@@ -7,26 +7,22 @@ import com.example.ControllerEtService.Question.QuestionService;
 import com.example.model.Arret;
 import com.example.model.Chamis;
 import com.example.model.Defis;
-import com.example.model.Epilogue;
 import com.example.model.Etape;
 import com.example.model.Indice;
 import com.example.model.Information;
 import com.example.model.Materiel;
 import com.example.model.MotCle;
-import com.example.model.Prologue;
 import com.example.model.Question;
 import com.example.model.Reponse;
 import com.example.model.Visite;
 import com.example.repository.ArretRepository;
 import com.example.repository.ChamisRepository;
 import com.example.repository.DefisRepository;
-import com.example.repository.EpilogueRepository;
 import com.example.repository.EtapeRepository;
 import com.example.repository.IndiceRepository;
 import com.example.repository.InformationRepository;
 import com.example.repository.MaterielRepository;
 import com.example.repository.MotCleRepository;
-import com.example.repository.PrologueRepository;
 import com.example.repository.QuestionRepository;
 import com.example.repository.ReponseRepository;
 
@@ -43,8 +39,6 @@ public class DefisService {
     private final ChamisRepository chamisRepository;
     private final MotCleRepository motCleRepository;
     private final EtapeRepository etapeRepository;
-    private final PrologueRepository prologueRepository;
-    private final EpilogueRepository epilogueRepository;
     private final MaterielRepository materielRepository;
     private final ReponseRepository reponseRepository;
     private final QuestionRepository questionRepository;
@@ -56,15 +50,12 @@ public class DefisService {
 
     @Autowired
     public DefisService(DefisRepository defisRepository, ChamisRepository chamisRepository,
-            MotCleRepository motCleRepository,EtapeRepository etapeRepository, PrologueRepository prologueRepository,EpilogueRepository  epilogueRepository
-            ,MaterielRepository materielRepository, ReponseRepository reponseRepository, QuestionRepository questionRepository, IndiceRepository indiceRepository,
+            MotCleRepository motCleRepository,EtapeRepository etapeRepository,MaterielRepository materielRepository, ReponseRepository reponseRepository, QuestionRepository questionRepository, IndiceRepository indiceRepository,
             InformationRepository informationRepository, QuestionService questionService, ArretRepository arretRepository,   InformationService informationService) {
         this.defisRepository = defisRepository;
         this.chamisRepository = chamisRepository;
         this.motCleRepository = motCleRepository;
         this.etapeRepository=etapeRepository;
-        this.prologueRepository = prologueRepository;
-        this.epilogueRepository= epilogueRepository;
         this.materielRepository = materielRepository;
         this.reponseRepository = reponseRepository;
         this.questionRepository = questionRepository;
@@ -105,10 +96,10 @@ public class DefisService {
         updatedDefi.setDateDeCreation(defi.getDateDeCreation());
         updatedDefi.setDateDeModification(defi.getDateDeModification());
         updatedDefi.setMotsCles(defi.getMotsCles());
-        // updatedDefi.setArret(defi.getArret());
         updatedDefi.setPrologue(defi.getPrologue());
         updatedDefi.setEpilogue(defi.getEpilogue());
         updatedDefi.setEtapes(defi.getEtapes());
+        updatedDefi.setActif(defi.getActif());
         for(Etape e : defi.getEtapes()){
    
             if(e instanceof Question){
@@ -131,23 +122,16 @@ public class DefisService {
             if(updatedDefi.getArret().getIdentifiant() != defi.getArret().getIdentifiant()){
                 System.out.println("les deux arret sont différent donc update");
                Arret arret = arretRepository.findByIdentifiant(defi.getArret().getIdentifiant());
-               //Arret oldArret = updatedDefi.getArret();
-               // lors du changement d'arret la liaison entre defis et arret dans la trable les_arrets_defis n'est pas supprimé
-               // oldArret.DeleteDefis(updatedDefi);
                arretRepository.deletedefisarrets(updatedDefi.getArret().getIdentifiant(), updatedDefi.getIdentifiant());
                arret.addDefis(updatedDefi);
                updatedDefi.setArret(arret);
-
-         
             }
-
-        }else if(defi.getArret() != null){
+        } else if(defi.getArret() != null){
             System.out.println("coucocu 3");
 
             Arret arret = arretRepository.findByIdentifiant(defi.getArret().getIdentifiant());
             arret.addDefis(updatedDefi);
             updatedDefi.setArret(arret);
-            // updatedDefi.setArret(arret);
         }
         return updatedDefi;
     }
@@ -216,21 +200,20 @@ public class DefisService {
         System.out.println("Défis 1.2 Service");
         List<Visite> listeVisites = deleteDefis.getVisites();
         List<Etape> listeEtapes = deleteDefis.getEtapes();
-        Prologue prologue = deleteDefis.getPrologue();
-        Epilogue epilogue = deleteDefis.getEpilogue();
+        List<Materiel> prologue = deleteDefis.getPrologue();
+        List<Materiel> epilogue = deleteDefis.getEpilogue();
         System.out.println("Défis 2 Service");
         
         if(listeVisites.size() ==0){
             System.out.println("Défis 3 Service");
+            defisRepository.delete(deleteDefis);
             deleteEtapeDefis(listeEtapes); 
             deletePrologueDefis(prologue);
             deleteEpilogueDefis(epilogue);       
-            defisRepository.delete(deleteDefis);
         } else {
             System.out.println("Défis 4 Service");
             System.out.println("Etat d'activité du défis de la fct avant modif"+deleteDefis.getActif());
-            deleteDefis.setActif();
-            // defisRepository.save(deleteDefis);
+            deleteDefis.setActif(false);
             System.out.println("Etat d'activité du défis de la fct après modif"+deleteDefis.getActif());
             Defis defi = defisRepository.findById(deleteDefis.getIdentifiant()).get();
             System.out.println("Défis 5 Service, Etat d'activité du défi récup après modif "+defi.getActif());
@@ -287,16 +270,12 @@ public class DefisService {
         }
     }
 
-    public void deletePrologueDefis(Prologue prologue){
-        List<Materiel> listMaterielPrologue = prologue.getMateriels();
-        deleteMaterielDefis(listMaterielPrologue);
-        prologueRepository.delete(prologue);
+    public void deletePrologueDefis(List<Materiel> prologue){
+        deleteMaterielDefis(prologue);
     }
 
-    public void deleteEpilogueDefis(Epilogue epilogue){
-        List<Materiel> listMaterielEpilogue = epilogue.getMateriels();
-        deleteMaterielDefis(listMaterielEpilogue);
-        epilogueRepository.delete(epilogue);
+    public void deleteEpilogueDefis(List<Materiel> epilogue){
+        deleteMaterielDefis(epilogue);
     }
 
     public void deleteMaterielDefis(List<Materiel> materiels){

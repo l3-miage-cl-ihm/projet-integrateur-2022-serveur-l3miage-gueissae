@@ -132,11 +132,11 @@ public class Defis{
     @OneToMany
     private List<Visite> visites;
 
-    @OneToOne
-    private Prologue prologue;
+    @OneToMany
+    private List<Materiel> prologue;
 
-    @OneToOne
-    private Epilogue epilogue;
+    @OneToMany
+    private List<Materiel> epilogue;
 
     @OneToMany
     @OrderBy("numero")
@@ -159,8 +159,8 @@ public class Defis{
     }
 
     public Defis(String titre, String description, Type type, Mode mode, int point, int duree, String commentaire,
-            String dateDeCreation, String dateDeModification, List<Visite> visites, Prologue prologue,
-            Epilogue epilogue, List<Etape> etapes, List<MotCle> motsCles, Boolean actif) {
+            String dateDeCreation, String dateDeModification, List<Visite> visites, List<Materiel> prologue,
+            List<Materiel> epilogue, List<Etape> etapes, List<MotCle> motsCles, Boolean actif) {
         this.setIdentifiant();
         this.titre = titre;
         this.description = description;
@@ -178,7 +178,6 @@ public class Defis{
         this.motsCles = motsCles;
         this.actif = actif;
     }
-
 
     // // // // // // // // 
     //     GET & SET     //
@@ -269,8 +268,8 @@ public class Defis{
         return actif;
     }
 
-    public void setActif() {
-        this.actif = !this.actif;
+    public void setActif(Boolean actif) {
+        this.actif = actif;
     }
 
     public List<Visite> getVisites() {
@@ -281,19 +280,19 @@ public class Defis{
         this.visites = visites;
     }
 
-    public Prologue getPrologue() {
+    public List<Materiel> getPrologue() {
         return prologue;
     }
 
-    public void setPrologue(Prologue prologue) {
+    public void setPrologue(List<Materiel> prologue) {
         this.prologue = prologue;
     }
 
-    public Epilogue getEpilogue() {
+    public List<Materiel> getEpilogue() {
         return epilogue;
     }
 
-    public void setEpilogue(Epilogue epilogue) {
+    public void setEpilogue(List<Materiel> epilogue) {
         this.epilogue = epilogue;
     }
 
@@ -324,10 +323,10 @@ public class Defis{
     public void addMotCle(MotCle  motcle)  {
         this.motsCles.add(motcle);
     }
+
     public void  suppressMotCle(MotCle motcle){
         this.motsCles.remove(motcle);
     }
-
 
     public Arret getArret() {
         return arret;
