@@ -246,7 +246,7 @@
 -- INSERT INTO les_defis_etapes(defis_identifiant,etapes_identifiant) VALUES (1,25);
 
 
-
+update pg_database set encoding = pg_char_to_encoding('UTF8') where datname = 'Groupe8';
 INSERT INTO les_arrets (identifiant,code,nom,ligne,lon,lat) VALUES (0, 'SEM:GENLETOILE', 'L Etoile', 'A', '5.7033', '45.13788');
 INSERT INTO les_arrets (identifiant,code,nom,ligne,lon,lat) VALUES (1, 'SEM:GENCHANDON', 'Edm e Chandon', 'A', '5.7083', '45.13671');
 INSERT INTO les_arrets (identifiant,code,nom,ligne,lon,lat) VALUES (2, 'SEM:GENDENPAPIN', 'Denis Papin', 'A', '5.71307', '45.13832');
