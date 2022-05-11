@@ -20,7 +20,7 @@ public class Indice{
     // // // // // // // //.
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(
         name="identifiant",
         insertable = true,
