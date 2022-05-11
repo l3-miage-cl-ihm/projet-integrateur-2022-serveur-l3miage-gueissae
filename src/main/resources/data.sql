@@ -121,9 +121,9 @@
 -- INSERT INTO les_villes (ville) VALUES ('Grenoble');
 -- INSERT INTO  les_chamis (email,active,age,description,login,ville_identifiant) VALUES  ('naruben74@gmail.com',true,22,'Le premier user !','icare',1);
 
--- INSERT INTO les_informations (numero,texte) VALUES (1,'Allô est-ce que quelqu’un reçoit ces messages ?');
--- INSERT INTO les_informations (numero,texte) VALUES (2,'Raaaaah saleté de téléphone j’y comprend rien.');
--- INSERT INTO les_informations (numero,texte) VALUES (3,'Il faut que vous m’aidiez !');
+-- INSERT INTO les_informations (numero,texte) VALUES (1,'Allô est-ce que quelqu''un reçoit ces messages ?');
+-- INSERT INTO les_informations (numero,texte) VALUES (2,'Raaaaah saleté de téléphone j''y comprend rien.');
+-- INSERT INTO les_informations (numero,texte) VALUES (3,'Il faut que vous m''aidiez !');
 -- INSERT INTO les_informations (numero,texte) VALUES (4,'je suis tombé dans un trou bizarre et là je suis dans une ville bizarre avec des gens bizarres habillés avec des draps la.');
 -- INSERT INTO les_informations (numero,texte) VALUES (5,'Je suis ou vous pensez ? Sur un tournage de film bizarre ??');
 
@@ -146,11 +146,11 @@
 
 
 -- INSERT INTO les_informations (numero,texte) VALUES (7,'Pourquoi vous me parlez de romains ?');
--- INSERT INTO les_informations (numero,texte) VALUES (8,'Attendez là vous pensez que j’ai fait un retour dans le temps ?');
--- INSERT INTO les_informations (numero,texte) VALUES (9,'Oh la la c’est quoi ça encore ? Je vais encore être en retard pour le dîner ça veut dire …');
--- INSERT INTO les_informations (numero,texte) VALUES (10,'Va falloir que vous m’aidiez à sortir d’ici !  Parce que ce soir c’est censé être lasagnes et je veux pas louper ça !');
--- INSERT INTO les_informations (numero,texte) VALUES (11,'Il parle tous d’une nouvelle apparement la ville vient d’être reconnu par un certain sénateur');
--- INSERT INTO les_informations (numero,texte) VALUES (12,'Essayez de trouver son nom ça devrait m’être utile !');
+-- INSERT INTO les_informations (numero,texte) VALUES (8,'Attendez là vous pensez que j''ai fait un retour dans le temps ?');
+-- INSERT INTO les_informations (numero,texte) VALUES (9,'Oh la la c''est quoi ça encore ? Je vais encore être en retard pour le dîner ça veut dire …');
+-- INSERT INTO les_informations (numero,texte) VALUES (10,'Va falloir que vous m''aidiez à sortir d''ici !  Parce que ce soir c''est censé être lasagnes et je veux pas louper ça !');
+-- INSERT INTO les_informations (numero,texte) VALUES (11,'Il parle tous d''une nouvelle apparement la ville vient d''être reconnu par un certain sénateur');
+-- INSERT INTO les_informations (numero,texte) VALUES (12,'Essayez de trouver son nom ça devrait m''être utile !');
 
 -- INSERT INTO les_questions (numero,description,label) VALUES (13,'Quel est le nom du sénateur ayant reconnu le statut de ville pour Grenoble ?','Question 2: Sénateur');
 
@@ -169,10 +169,10 @@
 -- INSERT INTO les_questions_reponses (les_questions_identifiant,reponses_identifiant)  VALUES (13,7);
 -- INSERT INTO les_questions_reponses (les_questions_identifiant,reponses_identifiant)  VALUES (13,8);
 																				 
--- INSERT INTO les_informations (numero,texte) VALUES (14,' et beh sacré nom hein je plain les profs qui devait l’appeler hein ');
+-- INSERT INTO les_informations (numero,texte) VALUES (14,' et beh sacré nom hein je plain les profs qui devait l''appeler hein ');
 -- INSERT INTO les_informations (numero,texte) VALUES (15,'bon déjà je connais un nom on avance.');
--- INSERT INTO les_informations (numero,texte) VALUES (16,'je suis en dehors de la ville la ca m’avancerais peut être de rentrer mais il y a des remparts et je connais pas le nom de la porte pour demander mon chemin');
--- INSERT INTO les_informations (numero,texte) VALUES (17,'il faut que tu m’aides !');
+-- INSERT INTO les_informations (numero,texte) VALUES (16,'je suis en dehors de la ville la ca m''avancerais peut être de rentrer mais il y a des remparts et je connais pas le nom de la porte pour demander mon chemin');
+-- INSERT INTO les_informations (numero,texte) VALUES (17,'il faut que tu m''aides !');
 
 -- INSERT INTO les_questions (numero,description,label) VALUES (18,'Quel est le nom du bar a devant l ancien rempart?','Question 3: Rempart');
 
@@ -209,7 +209,7 @@
 -- INSERT INTO les_questions_reponses (les_questions_identifiant,reponses_identifiant)  VALUES (23,13);
 -- INSERT INTO les_questions_reponses (les_questions_identifiant,reponses_identifiant)  VALUES (23,14);
 
--- INSERT INTO les_informations (numero,texte) VALUES (24,'Non, ce n’est pas la que j’étais, c’était plus vers le jardin de ville, il me semble que je sortais du bar à côté de l’église.');
+-- INSERT INTO les_informations (numero,texte) VALUES (24,'Non, ce n''est pas la que j''étais, c''était plus vers le jardin de ville, il me semble que je sortais du bar à côté de l''église.');
 -- INSERT INTO les_informations (numero,texte) VALUES (25,' Va voir sur le mur a l etree du jardin de ville cote eglise y a une phrase bizarre que j ai lu');
 
 -- INSERT INTO les_defis  (actif,commentaire,date_de_creation,date_de_modification,description,duree,mode,point,titre,type,arret_identifiant)
@@ -247,6 +247,7 @@
 
 
 update pg_database set encoding = pg_char_to_encoding('UTF8') where datname = 'Groupe8';
+
 INSERT INTO les_arrets (identifiant,code,nom,ligne,lon,lat) VALUES (0, 'SEM:GENLETOILE', 'L Etoile', 'A', '5.7033', '45.13788');
 INSERT INTO les_arrets (identifiant,code,nom,ligne,lon,lat) VALUES (1, 'SEM:GENCHANDON', 'Edm e Chandon', 'A', '5.7083', '45.13671');
 INSERT INTO les_arrets (identifiant,code,nom,ligne,lon,lat) VALUES (2, 'SEM:GENDENPAPIN', 'Denis Papin', 'A', '5.71307', '45.13832');
@@ -370,11 +371,11 @@ INSERT INTO les_arrets (identifiant,code,nom,ligne,lon,lat) VALUES (118, 'SEM:GE
 INSERT INTO les_villes (identifiant,ville) VALUES (1,'Grenoble');
 INSERT INTO  les_chamis (email,active,age,description,login,ville_identifiant) VALUES  ('naruben74@gmail.com',true,22,'Le premier user !','icare',1);
 
-INSERT INTO les_informations (identifiant,numero,texte) VALUES (1,1,'Allô est-ce que quelqu’un reçoit ces messages ?');
-INSERT INTO les_informations (identifiant,numero,texte) VALUES (2,2,'Raaaaah saleté de téléphone j’y comprend rien ');
-INSERT INTO les_informations (identifiant,numero,texte) VALUES (3,3,'Il faut que vous m’aidiez,');
-INSERT INTO les_informations (identifiant,numero,texte) VALUES (4,4,'je suis tombé dans un trou bizarre et là je suis dans une ville bizarre avec des gens bizarres habillés avec des draps la.');
-INSERT INTO les_informations (identifiant,numero,texte) VALUES (5,5,'Je suis ou vous pensez sur un tournage de film bizarre ?');
+INSERT INTO les_informations (identifiant,numero,texte) VALUES (1,1,'Allô est-ce que quelqu''un reçoit ces messages ?');
+INSERT INTO les_informations (identifiant,numero,texte) VALUES (2,2,'Raaaaah saleté de téléphone j''y comprend rien !!!');
+INSERT INTO les_informations (identifiant,numero,texte) VALUES (3,3,'Il faut que vous m''aidiez !');
+INSERT INTO les_informations (identifiant,numero,texte) VALUES (4,4,'Je suis tombé dans un trou bizarre et là je suis dans une ville bizarre avec des gens bizarres habillés avec des draps la.');
+INSERT INTO les_informations (identifiant,numero,texte) VALUES (5,5,'Vous pensez que je suis sur le tournage d''un film bizarre ?');
 
 INSERT INTO les_questions (identifiant,numero,description,label) VALUES (6,6,'Quel est le peuple ayant vécu à Grenoble au IIIème siècle ?','Question 1: Romains');
 
@@ -401,11 +402,11 @@ INSERT INTO les_questions_reponses (les_questions_identifiant,reponses_identifia
 
 
 INSERT INTO les_informations (identifiant,numero,texte) VALUES (7,7,'Pourquoi vous me parlez de romains ?');
-INSERT INTO les_informations (identifiant,numero,texte) VALUES (8,8,'Attendez là vous pensez que j’ai fait un retour dans le temps ?');
-INSERT INTO les_informations (identifiant,numero,texte) VALUES (9,9,'Oh la la c’est quoi ça encore ? Je vais encore être en retard pour le dîner ça veut dire …');
-INSERT INTO les_informations (identifiant,numero,texte) VALUES (10,10,'Va falloir que vous m’aidiez à sortir d’ici !  Parce que ce soir c’est censé être lasagnes et je veux pas louper ça !');
-INSERT INTO les_informations (identifiant,numero,texte) VALUES (11,11,'Il parle tous d’une nouvelle apparement la ville vient d’être reconnu par un certain sénateur');
-INSERT INTO les_informations (identifiant,numero,texte) VALUES (12,12,'Essayez de trouver son nom ça devrait m’être utile !');
+INSERT INTO les_informations (identifiant,numero,texte) VALUES (8,8,'Attendez là vous pensez que j''ai fait un retour dans le temps ?');
+INSERT INTO les_informations (identifiant,numero,texte) VALUES (9,9,'Oh la la c''est quoi ça encore ? Je vais encore être en retard pour le dîner ça veut dire …');
+INSERT INTO les_informations (identifiant,numero,texte) VALUES (10,10,'Va falloir que vous m''aidiez à sortir d''ici !  Parce que ce soir c''est censé être lasagnes et je veux pas louper ça !');
+INSERT INTO les_informations (identifiant,numero,texte) VALUES (11,11,'Il parle tous d''une nouvelle apparement la ville vient d''être reconnu par un certain sénateur');
+INSERT INTO les_informations (identifiant,numero,texte) VALUES (12,12,'Essayez de trouver son nom ça devrait m''être utile !');
 
 INSERT INTO les_questions (identifiant,numero,description,label) VALUES (13,13,'Quel est le nom du sénateur ayant reconnu le statut de ville pour Grenoble ?','Question 2: Sénateur');
 
@@ -429,10 +430,10 @@ INSERT INTO les_questions_reponses (les_questions_identifiant,reponses_identifia
 INSERT INTO les_questions_reponses (les_questions_identifiant,reponses_identifiant)  VALUES (13,7);
 INSERT INTO les_questions_reponses (les_questions_identifiant,reponses_identifiant)  VALUES (13,8);
 																				 
-INSERT INTO les_informations (identifiant,numero,texte) VALUES (14,14,' et beh sacré nom hein je plain les profs qui devait l’appeler hein ');
+INSERT INTO les_informations (identifiant,numero,texte) VALUES (14,14,' Et beh sacré nom hein je plain les profs qui devait l''appeler ! ');
 INSERT INTO les_informations (identifiant,numero,texte) VALUES (15,15,'bon déjà je connais un nom on avance.');
-INSERT INTO les_informations (identifiant,numero,texte) VALUES (16,16,'je suis en dehors de la ville la ca m’avancerais peut être de rentrer mais il y a des remparts et je connais pas le nom de la porte pour demander mon chemin');
-INSERT INTO les_informations (identifiant,numero,texte) VALUES (17,17,'il faut que tu m’aides !');
+INSERT INTO les_informations (identifiant,numero,texte) VALUES (16,16,'je suis en dehors de la ville la ca m''avancerais peut être de rentrer mais il y a des remparts et je connais pas le nom de la porte pour demander mon chemin');
+INSERT INTO les_informations (identifiant,numero,texte) VALUES (17,17,'il faut que tu m''aides !');
 
 INSERT INTO les_questions (identifiant,numero,description,label) VALUES (18,18,'Quel est le nom du bar a devant l ancien rempart?','Question 3: Rempart');
 
@@ -480,7 +481,7 @@ INSERT INTO les_reponses(identifiant,bonne_reponse,materiel_identifiant) VALUES 
 INSERT INTO les_questions_reponses (les_questions_identifiant,reponses_identifiant)  VALUES (23,13);
 INSERT INTO les_questions_reponses (les_questions_identifiant,reponses_identifiant)  VALUES (23,14);
 
-INSERT INTO les_informations (identifiant,numero,texte) VALUES (24,24,'Non, ce n’est pas la que j’étais, c’était plus vers le jardin de ville, il me semble que je sortais du bar à côté de l’église.');
+INSERT INTO les_informations (identifiant,numero,texte) VALUES (24,24,'Non, ce n''est pas la que j''étais, c''était plus vers le jardin de ville, il me semble que je sortais du bar à côté de l''église.');
 INSERT INTO les_informations (identifiant,numero,texte) VALUES (25,25,' Va voir sur le mur a l etree du jardin de ville cote eglise y a une phrase bizarre que j ai lu');
 
 INSERT INTO les_defis  (identifiant,actif,commentaire,date_de_creation,date_de_modification,description,duree,mode,point,titre,type,arret_identifiant)

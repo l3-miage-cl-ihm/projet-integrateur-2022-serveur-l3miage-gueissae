@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(allowedHeaders = "*")
 @RequestMapping("/api/defis") // TODO: supprimer le s
 public class DefisController {
 
