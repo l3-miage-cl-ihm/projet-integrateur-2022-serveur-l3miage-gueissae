@@ -82,7 +82,7 @@ public class DefisService {
 
     @Transactional
     public Defis updateDefis(Defis defi) {
-        String id = defi.getIdentifiant();
+        Integer id = defi.getIdentifiant();
         Defis updatedDefi = defisRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Defis not found"));
         ;
@@ -156,7 +156,7 @@ public class DefisService {
 * @see   Defis
 */
     @Transactional
-    public Defis addMotCleDefis(String mot, String idDefi) {
+    public Defis addMotCleDefis(String mot, Integer idDefi) {
         MotCle motCle = motCleRepository.findByMot(mot);
         Defis updatedDefi = defisRepository.findById(idDefi)
                 .orElseThrow(() -> new IllegalArgumentException("Defis not found"));
@@ -176,7 +176,7 @@ public class DefisService {
 * @see   Defis
 */
     @Transactional
-    public Defis removeMotCleDefis(String mot, String idDefi) {
+    public Defis removeMotCleDefis(String mot, Integer idDefi) {
         MotCle motCle = motCleRepository.findByMot(mot);
         Defis updatedDefi = defisRepository.findById(idDefi)
                 .orElseThrow(() -> new IllegalArgumentException("Defis not found"));
@@ -201,7 +201,7 @@ public class DefisService {
 * @see   Defis
 */
     @Transactional
-    public void deleteDefis(String idDefi){
+    public void deleteDefis(Integer idDefi){
         System.out.println("Défis 1 Service");
         System.out.println("L'id :::::::::::::::::::: "+idDefi);
         Defis deleteDefis = defisRepository.findById(idDefi).orElseThrow(() -> new IllegalArgumentException("Defis not found"));

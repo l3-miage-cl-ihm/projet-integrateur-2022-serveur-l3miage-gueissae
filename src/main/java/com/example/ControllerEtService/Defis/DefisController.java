@@ -57,7 +57,7 @@ public class DefisController {
         }
     }
     @DeleteMapping("/motcle/{defi}/{mot}")
-    public ResponseEntity<Defis> deleteMotCleDefis(@PathVariable(value="mot") String mot,@PathVariable(value="defi")String defi){
+    public ResponseEntity<Defis> deleteMotCleDefis(@PathVariable(value="mot") String mot,@PathVariable(value="defi")Integer defi){
         try{
             Defis d = defisService.removeMotCleDefis(mot, defi);
             System.out.println(d.getIdentifiant());
@@ -67,7 +67,7 @@ public class DefisController {
         }
     }
     @PutMapping("/motcle/{defi}/{mot}")
-    public ResponseEntity<Defis> addMotCleDefis(@PathVariable(value="mot")String mot,@PathVariable(value="defi")String defi){
+    public ResponseEntity<Defis> addMotCleDefis(@PathVariable(value="mot")String mot,@PathVariable(value="defi")Integer defi){
         try{
             Defis d = defisService.addMotCleDefis(mot, defi);
             System.out.println(d.getIdentifiant());
@@ -77,7 +77,7 @@ public class DefisController {
         }
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Defis> deleteDefis(@PathVariable(value="id") String identifiant) {
+    public ResponseEntity<Defis> deleteDefis(@PathVariable(value="id") Integer identifiant) {
         System.out.println("Défis 1 Controller");
         try{
             System.out.println("Défis 2 Controller");

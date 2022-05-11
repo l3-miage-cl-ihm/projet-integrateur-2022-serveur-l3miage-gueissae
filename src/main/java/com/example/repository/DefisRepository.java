@@ -4,5 +4,5 @@ import com.example.model.Defis;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface DefisRepository extends JpaRepository<Defis, String> {
+public interface DefisRepository extends JpaRepository<Defis, Integer> {
 }

@@ -234,8 +234,8 @@ INSERT INTO les_questions_reponses (les_questions_identifiant,reponses_identifia
 INSERT INTO les_informations (identifiant,numero,texte) VALUES (24,24,'Non, ce n’est pas la que j’étais, c’était plus vers le jardin de ville, il me semble que je sortais du bar à côté de l’église.');
 INSERT INTO les_informations (identifiant,numero,texte) VALUES (25,25,' Va voir sur le mur a l etree du jardin de ville cote eglise y a une phrase bizarre que j ai lu');
 
-INSERT INTO les_defis  (identifiant,actif,commentaire,date_de_creation,date_de_modification,description,duree,mode,point,titre,type,arret_identifiant)
-VALUES (1,true,'Le premier defi !','10/05/2022','11/05/2022','Aidez  thierry à s en sortir au III eme siecle !',30,1,5,'Retour dans le temps ! Grenoble et les romains !',0,42);
+INSERT INTO les_defis  (actif,commentaire,date_de_creation,date_de_modification,description,duree,mode,point,titre,type,arret_identifiant)
+VALUES (true,'Le premier defi !','10/05/2022','11/05/2022','Aidez  thierry à s en sortir au III eme siecle !',30,1,5,'Retour dans le temps ! Grenoble et les romains !',0,42);
 
 INSERT INTO les_arrets_defis (arret_identifiant,defis_identifiant) VALUES  (42,1);
 

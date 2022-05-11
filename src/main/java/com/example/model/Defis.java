@@ -33,7 +33,8 @@ public class Defis{
         updatable = false
 
     )
-    private String identifiant;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer identifiant;
 
     @Column
     (
@@ -184,13 +185,13 @@ public class Defis{
     //     GET & SET     //
     // // // // // // // //
 
-    public String getIdentifiant() {
+    public Integer getIdentifiant() {
         return identifiant;
     }
 
     private void setIdentifiant() {
-        this.identifiant = "" + getindice();
-        setindice(indice + 1);
+        // this.identifiant = "" + getindice();
+        // setindice(indice + 1);
     }
 
     public String getTitre() {
