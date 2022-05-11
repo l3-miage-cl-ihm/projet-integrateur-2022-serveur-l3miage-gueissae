@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.CascadeType;
 
@@ -22,7 +23,13 @@ public class Reponse {
     // // // // // // // //
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator="reponse_sequence")
+    @SequenceGenerator(
+        name="reponse_sequence",
+        sequenceName="reponse_sequence",
+        allocationSize = 1,
+        initialValue=50
+    )
     @Column
     (
         name= "identifiant",

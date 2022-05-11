@@ -15,7 +15,14 @@ public class MotCle {
     // // // // // // // //
 
     @Id 
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY,
+    generator="motCle_sequence")
+    @SequenceGenerator(
+        name="motCle_sequence",
+        sequenceName="motCle_sequence",
+        allocationSize = 1,
+        initialValue=50
+    )
     @Column(
         name="identifiant",
         insertable = true,

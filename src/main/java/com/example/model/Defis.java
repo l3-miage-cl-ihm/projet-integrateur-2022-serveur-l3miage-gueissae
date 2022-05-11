@@ -33,7 +33,15 @@ public class Defis{
         updatable = false
 
     )
-    private String identifiant;
+    @GeneratedValue(strategy = GenerationType.AUTO,
+    generator="defis_sequence")
+    @SequenceGenerator(
+        name="defis_sequence",
+        sequenceName="defis_sequence",
+        allocationSize = 1,
+        initialValue=50
+    )
+    private Integer identifiant;
 
     @Column
     (
@@ -179,17 +187,18 @@ public class Defis{
         this.actif = actif;
     }
 
+
     // // // // // // // // 
     //     GET & SET     //
     // // // // // // // //
 
-    public String getIdentifiant() {
+    public Integer getIdentifiant() {
         return identifiant;
     }
 
     private void setIdentifiant() {
-        this.identifiant = "" + getindice();
-        setindice(indice + 1);
+        // this.identifiant = "" + getindice();
+        // setindice(indice + 1);
     }
 
     public String getTitre() {
@@ -323,10 +332,10 @@ public class Defis{
     public void addMotCle(MotCle  motcle)  {
         this.motsCles.add(motcle);
     }
-
     public void  suppressMotCle(MotCle motcle){
         this.motsCles.remove(motcle);
     }
+
 
     public Arret getArret() {
         return arret;

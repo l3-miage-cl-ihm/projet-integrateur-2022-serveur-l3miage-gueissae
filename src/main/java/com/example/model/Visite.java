@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 // import javax.persistence.ManyToMany;
 // import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -26,7 +27,14 @@ public class Visite {
     // // // // // // // //
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO,
+    generator="visite_sequence")
+    @SequenceGenerator(
+        name="visite_sequence",
+        sequenceName="visite_sequence",
+        allocationSize = 1,
+        initialValue=50
+    )
     @Column(
         name="identifiant",
         insertable = true,

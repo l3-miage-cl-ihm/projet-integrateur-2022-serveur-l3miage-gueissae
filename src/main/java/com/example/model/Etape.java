@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -31,7 +32,14 @@ public abstract class Etape {
     // // // // // // // //
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO,
+    generator="etape_sequence")
+    @SequenceGenerator(
+        name="etape_sequence",
+        sequenceName="etape_sequence",
+        allocationSize = 1,
+        initialValue=50
+    )
     @Column(
         name ="identifiant",
         insertable = true,

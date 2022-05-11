@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -29,15 +30,15 @@ public class Arret {
     // // // // // // // //
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(
-        name="identifiant",
-        insertable = true,
-        nullable = false,
-        unique=true,
-        updatable = false
+    @GeneratedValue(strategy = GenerationType.AUTO,
+    generator="arret_sequence")
+    @SequenceGenerator(
+        name="arret_sequence",
+        sequenceName="arret_sequence",
+        allocationSize = 1,
+        initialValue=50
     )
-    private int identifiant;
+    private Integer identifiant;
 
     @Column(
         name="code",

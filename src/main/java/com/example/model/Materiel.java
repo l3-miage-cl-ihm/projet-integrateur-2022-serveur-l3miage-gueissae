@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -33,15 +34,15 @@ public class Materiel{
     // // // // // // // //
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(
-        name="identifiant",
-        insertable = true,
-        nullable = false,
-        unique=true,
-        updatable = false
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    generator ="materiel_sequence")
+    @SequenceGenerator(
+        name="materiel_sequence",
+        sequenceName="materiel_sequence",
+        allocationSize = 1,
+        initialValue=50
     )
-    private int identifiant;
+    private Integer identifiant;
 
     @Column(
         name="numero",

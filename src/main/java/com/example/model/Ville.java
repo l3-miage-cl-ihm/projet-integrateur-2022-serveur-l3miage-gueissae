@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +19,13 @@ public class Ville {
     // // // // // // // //
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO,generator="ville_sequence")
+    @SequenceGenerator(
+        name="ville_sequence",
+        sequenceName="ville_sequence",
+        allocationSize = 1,
+        initialValue=50
+    )
     @Column(
         name="identifiant",
         insertable = true,
