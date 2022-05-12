@@ -198,31 +198,45 @@ GET api/reponse/ : renvoie la liste de toutes les réponses de la base de donné
 
 GET api/reponse/{id} : renvoie la reponse ayant l'identifiant en entrée 
 
-POST api/reponse/ : prend en entrée une reponse dans le body pour update la reponse ayant le même identifiant dans la base pour qu'elle prenne les attributs de la réponse en entrée
+POST api/reponse/ : rajoute une reponse dans la base de donnée 
 
 DELETE api/reponse/ : prend en entrée un id dans le body pour supprimer la reponse correspondante
 
+### api/texte/
 
+GET api/texte/ : renvoie la liste de tout les textes
 
+GET api/texte/{identifiant} : renvoie le texte ayant l'identifiant 
 
+POST api/texte/ : rajoute un texte dans la base de donnée 
 
+### api/video/
 
+GET api/video/ :renvoie la liste de toutes les vidéos
 
+GET api/video/{id} : renvoie la video ayant l'identifiant en entrée
 
+POST api/video/ : prend une video en entrée dans le body pour l'ajouté dans la base 
 
+DELETE api/video/{id} : supprime la video ayant l'identifiant id de la base de donnée 
 
+### api/ville/
 
+GET api/ville/ :renvoie la liste de toutes les villes
 
+GET api/ville/{id} : renvoie la ville ayant l'identifiant en entrée
 
+POST api/ville/ : prend une ville dans 
 
+DELETE api/ville/{id} : supprime la ville ayant l'identifiant id de la base de donnée
 
+### api/visite/
 
+GET api/visite/ : renvoie la liste de toutes les visite dans la base de donnée 
 
+GET api/visite/{id} : renvoie la visite avec l'identifiant en entrée
 
-
-
-
-
+POST api/visite/ : ajoute la visite mise dans le body dans la base de donnée
 
 
 
