@@ -44,6 +44,7 @@ public class Materiel{
     )
     private Integer identifiant;
 
+
     @Column(
         name="numero",
         insertable = true,
@@ -69,9 +70,13 @@ public class Materiel{
     //     GET & SET     //
     // // // // // // // //
 
-    public int getId() {
+    public Integer getId() {
         return identifiant;
     }
+
+    // public int getIdentifiant() {
+    //     return identifiant;
+    // }
 
     public int getNumero() {
         return numero;

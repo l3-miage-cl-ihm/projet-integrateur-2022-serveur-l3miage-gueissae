@@ -50,8 +50,7 @@ public class Reponse {
     )
     private boolean bonneReponse;
 
-    @OneToOne(
-        cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private Materiel materiel;
 
 
